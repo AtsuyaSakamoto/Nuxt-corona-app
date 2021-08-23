@@ -1,47 +1,82 @@
 <template>
-  <div class="m-10">
-    <h1 class="text-center mb-5">都道府県別病床使用率(データ更新日：</h1>
-      <div class="grid grid-cols-2 gap-6 mb-8 sm:grid-cols-4 lg:grid-cols-6">
-    <!-- Card 1 -->
-    <div class="flex items-center p-4 bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800">
-      <div>
-        <p class="mb-2 text-center text-md font-medium text-gray-900">Projects</p>
-        <p class="text-sm font-normal text-gray-800">Unlimted projects for you</p>
-      </div>
-    </div>
-    <!-- Card 2 -->
-    <div class="flex items-center p-4 bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800">
-      <div class="p-3 mr-4 bg-blue-500 text-white rounded-full">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-      </div>
-      <div>
-        <p class="mb-2 text-sm font-medium text-gray-900">Developer API</p>
-        <p class="text-sm font-normal text-gray-800">Well documented developer API</p>
-      </div>
-    </div>
-    <!-- Card 3 -->
-    <div class="flex items-center p-4 bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800">
-      <div class="p-3 mr-4 bg-blue-500 text-white rounded-full">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
-      </div>
-      <div>
-        <p class="mb-2 text-sm font-medium text-gray-900">Template</p>
-        <p class="text-sm font-normal text-gray-800">Templates and designs for your project</p>
-      </div>
-    </div>
+<div class="m-10 border-2 border-gray-200 bg-white">
+    <h1 class="text-center m-5 text-xl">都道府県別病床使用率(データ更新日：{{dataArry[0].updateDate}})</h1>
+<div class="flex items-center justify-center">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+        <div v-for="(data, index) in dataArry" :key="index">
 
-  </div>
-    <!-- <Modal v-if="showModal" :val="postItem" @close="closeModal"></Modal> -->
-  </div>
+        <div class="relative bg-white py-2 px-2 rounded-xl w-52 my-1"
+        :class="data.use_bed_rate_hospitalization > 100? 'bg-gray-500':
+      data.use_bed_rate_hospitalization > 60?
+      'bg-red-800':
+      data.use_bed_rate_hospitalization > 30?
+      'bg-red-300':'bg-red-100'
+      ">
+            <div>
+              <p class="mb-2 text-md font-medium text-gray-900 text-center text-lg">{{data.prefecture_name}}</p>
+            <p class="text-sm font-normal text-gray-800 text-center">{{data.use_bed_rate_hospitalization}}%</p>
+            <p class="text-sm font-normal text-gray-800 text-center">{{data.num_hospitalization}}人/{{data.beds_num_hospitalization}}床</p>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+
+  
+  
+  
+  
 </template>
 
 <script>
+// import VModal from 'vue-js-modal'
+// import Vue from "vue"
+// Vue.use(VModal)
 export default{
   props: {
     dataArry:{
       type: Array,
       default: () => []
     }
-  }
+  },
+  // methods: {
+  //   show() {
+  //     this.$modal.show("modal-content");
+  //   },
+  //   hide() {
+  //     this.$modal.hide("modal-content");
+  //   }
+  // }
 }
 </script>
+
+<div class="m-10 border-2 border-gray-200 bg-white">
+    <h1 class="text-center m-5 text-xl">都道府県別病床使用率(データ更新日：{{dataArry[0].updateDate}})</h1>
+      <div class="grid grid-cols-2 gap-6 mb-8 sm:grid-cols-4 lg:grid-cols-6 sm:mx-10">
+      <div v-for="(data, index) in dataArry" :key="index">
+      <div class="flex items-center p-4  border-2 border-gray-200 rounded-md"
+      :class="data.use_bed_rate_hospitalization > 100? 'bg-gray-500':
+      data.use_bed_rate_hospitalization > 60?
+      'bg-red-800':
+      data.use_bed_rate_hospitalization > 30?
+      'bg-red-300':'bg-red-100'
+      "
+      >
+        <div>
+          <p class="mb-2 text-md font-medium text-gray-900 text-center">{{data.prefecture_name}}</p>
+          <p class="text-sm font-normal text-gray-800 text-center">{{data.use_bed_rate_hospitalization}}%</p>
+          <p class="text-sm font-normal text-gray-800 text-center">{{data.num_hospitalization}}人/{{data.beds_num_hospitalization}}床</p>
+        </div>
+      </div>
+      </div>
+
+  </div>
+  <button @click="show">クリックする</button>
+
+    <modal name="modal-content">
+      <p>モーダルウィンドウで表示されるコンテンツ</p>
+   </modal>  
+    <Modal v-if="showModal" :val="postItem" @close="closeModal"></Modal> 
+</div>
+

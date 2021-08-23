@@ -14,7 +14,7 @@ export const actions = {
     for(let i=0; i<payload.length;i++){
       bedsData.push({
         id: Number(payload[i]["都道府県番号"]),
-        prefecture: payload[i]["都道府県名"],
+        prefecture_name: payload[i]["都道府県名"],
         per_positive: Number(payload[i]["PCR検査陽性者数"]),
         num_hospitalization: Number(payload[i]["入院者数"]),
         phase_hospitalization: payload[i]["入院患者フェーズ"],
