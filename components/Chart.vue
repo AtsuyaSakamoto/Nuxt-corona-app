@@ -36,8 +36,6 @@ export default {
   // },
   watch: {
     chartData() {
-      // eslint-disable-next-line no-console
-      console.log('監視')
       this.$data._chart.update()
       this.mounted()
     },
