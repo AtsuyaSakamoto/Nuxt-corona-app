@@ -77,7 +77,7 @@
             >Home</NuxtLink
           >
           <NuxtLink
-            to="/graph/totalCorona"
+            to="/data/wholeCountry"
             class="
               my-1
               text-sm
@@ -88,10 +88,10 @@
               dark:hover:text-indigo-400
               md:mx-4 md:my-0
             "
-            >感染者数</NuxtLink
+            >全国</NuxtLink
           >
           <NuxtLink
-            to="/graph/pcrCorona"
+            to="/data/prefectures"
             class="
               my-1
               text-sm
@@ -102,10 +102,10 @@
               dark:hover:text-indigo-400
               md:mx-4 md:my-0
             "
-            >PCR検査数</NuxtLink
+            >都道府県別</NuxtLink
           >
           <NuxtLink
-            to="/graph/bedUsed"
+            to="/data/bedUsage"
             class="
               my-1
               text-sm
@@ -119,7 +119,7 @@
             >病床使用率</NuxtLink
           >
           <NuxtLink
-            to="/graph/totalDead"
+            to="/data/pcrCorona"
             class="
               my-1
               text-sm
@@ -130,10 +130,10 @@
               dark:hover:text-indigo-400
               md:mx-4 md:my-0
             "
-            >死亡者数</NuxtLink
+            >PCR検査</NuxtLink
           >
           <NuxtLink
-            to="/graph/prefectures"
+            to="/about"
             class="
               my-1
               text-sm
@@ -144,7 +144,7 @@
               dark:hover:text-indigo-400
               md:mx-4 md:my-0
             "
-            >都道府県</NuxtLink
+            >ABOUT</NuxtLink
           >
         </div>
       </div>
