@@ -140,12 +140,12 @@ export default {
         }
       },
     })
-    context.store.dispatch('setPrefecturesData', parsedata.data)
+    context.store.dispatch('prefectures/setPrefecturesData', parsedata.data)
     // eslint-disable-next-line no-console
     console.log(parsedata.data)
   },
   computed: {
-    ...mapGetters(['prefecturesData']),
+    ...mapGetters(['prefectures/prefecturesData']),
   },
 
   created() {
