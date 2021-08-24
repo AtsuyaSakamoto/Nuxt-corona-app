@@ -1,21 +1,11 @@
 export const state = () => ({
-  prefecturesData: [],
+  data: [],
 })
 
 export const mutations = {
-  setPrefecturesData(state, prefecturesData) {
-    state.prefecturesData = prefecturesData
-  },
-}
-
-export const actions = {
-  setPrefecturesData({ commit }, prefecturesData) {
-    commit('setPrefecturesData', prefecturesData)
-  },
-}
-
-export const getters = {
-  prefecturesData: (state) => {
-    return state.prefecturesData
+  testMutations(state, prefecturesData) {
+    state.data = prefecturesData
+    // eslint-disable-next-line no-console
+    console.log('axios二回目')
   },
 }
