@@ -133,7 +133,7 @@
             >死亡者数</NuxtLink
           >
           <NuxtLink
-            to="/graph/prefectures"
+            to="/data/prefectures"
             class="
               my-1
               text-sm
