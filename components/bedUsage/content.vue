@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <h1 class="text-center text-sm sm:text-base md:text-xl lg:text-2xl text-white py-10 ">
       都道府県別病床使用率（データ更新日：{{ dataArry[0].updateDate }}）
     </h1>
@@ -30,7 +29,7 @@
                 ? 'bg-red-800'
                 : data.use_bed_rate_hospitalization > 30
                 ? 'bg-red-300'
-                : 'bg-red-100'
+                : 'bg-gray-300'
             "
             @click="show(index)"
           >
