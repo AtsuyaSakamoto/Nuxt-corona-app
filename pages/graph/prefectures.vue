@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-20">
+  <div class="small">
     <Chart :chart-data="chartdata" :options="options" />
     <select
       v-model="selected_pref_code"
