@@ -6,7 +6,6 @@ export const state = () => ({
 export const mutations = {
   setData(state, payload){
     state.bedUsage = payload
-    // console.log(state.bedUsage)
   }
 }
 export const actions = {
