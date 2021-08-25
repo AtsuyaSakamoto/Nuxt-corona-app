@@ -1,11 +1,6 @@
 <template>
   <body style="">
     <div id="root">
-<<<<<<< HEAD
-      <!-- <p>{{ new_total_bed }} </p> -->
-=======
-      <Dead />
->>>>>>> 1379b2c96d3115cb26ca991fd756c05321e7b10e
       <div>
         <div class="MuiContainer-root MuiContainer-maxWidthLg">
           <div
@@ -39,13 +34,6 @@
                   >
                     <h2 style="font-size: 24px">対策病床使用率(参考)※</h2>
                     <h2 style="font-size: 40px">
-<<<<<<< HEAD
-                       %
-                      </h2>
-=======
-                      {{ graphData[0].secure_bed }} %
-                    </h2>
->>>>>>> 1379b2c96d3115cb26ca991fd756c05321e7b10e
                     <h2 style="background: rgb(255, 128, 128)">ステージ3</h2>
                   </div>
                 </div>
@@ -66,13 +54,7 @@
                   >
                     <div>
                       <h2 style="font-size: 24px">累計感染者数</h2>
-<<<<<<< HEAD
                       <h2 style="font-size: 32px">  人</h2>
-=======
-                      <h2 style="font-size: 32px">
-                        {{ graphData[0].inpatient }} 人
-                      </h2>
->>>>>>> 1379b2c96d3115cb26ca991fd756c05321e7b10e
                       <h3 style="font-size: 24px">前日比：＋22,828人</h3>
                       <h3 style="font-size: 24px">前々日比：＋42,055人</h3>
                     </div>
@@ -123,13 +105,8 @@
               </div>
             </div>
             <p style="text-align: center; font-size: 24px">
-<<<<<<< HEAD
               感染者数 更新日：<br />※対策病床使用率(参考) = 現在患者
               / 新型コロナ対策病床数<br /><a
-=======
-              感染者数 更新日：{{ graphData[0].update }}
-              <br />※対策病床使用率(参考) = 現在患者 / 新型コロナ対策病床数<br /><a
->>>>>>> 1379b2c96d3115cb26ca991fd756c05321e7b10e
                 href="https://corona.go.jp/dashboard/"
                 target="_blunk"
                 rel="noopener noreferrer"
@@ -245,44 +222,6 @@ export default {
   },
 
   data() {
-    return {
-<<<<<<< HEAD
-      total: [],
-      new_total_usebed:[],
-      new_total_bed:[]
     }
-  },
-  created() {
-        const tranceData = []
-    for (let i = 0; i < this.usebed.length; i++) {
-=======
-      // graphData: [],
-      showModal: false,
-      postItem: '',
-    }
-  },
-  created() {
-    const tranceData = []
-    for (let i = 0; i < this.graphData.length; i++) {
->>>>>>> 1379b2c96d3115cb26ca991fd756c05321e7b10e
-      tranceData.push({
-        total_usebed: this.usebed[i]["入院者数"],
-        total_bed: this.usebed[i]["入院患者受入即応病床数"],
-      })
-    }
-<<<<<<< HEAD
-    this.total = tranceData
-    this.new_total_usebed = this.total.reduce((a,b) => a + b.total_usebed,0);
-    this.new_total_bed = this.total.reduce((a,b) => a + b.total_bed,0);
-
-  }
-=======
-    this.graphData = tranceData
-    // eslint-disable-next-line no-console
-    console.log(this.graphData)
-    // eslint-disable-next-line no-console
-    console.log(this.graphData2)
-  },
->>>>>>> 1379b2c96d3115cb26ca991fd756c05321e7b10e
 }
 </script>
