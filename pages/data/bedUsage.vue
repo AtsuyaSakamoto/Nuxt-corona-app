@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="bg-gray-900">
   <Content  :data-arry = "bedUsage"/>
 </div>
 </template>
