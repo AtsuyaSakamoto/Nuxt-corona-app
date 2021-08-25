@@ -35,7 +35,6 @@ export default {
     return {
       chartdata: {
         labels: ['推定病床残数', '入院者数'],
-
         datasets: [
           {
             label: ['累計感染者数'],
