@@ -1,7 +1,7 @@
 <template>
   <body style="">
+    <div> {{ usebed }} </div>
     <div id="root">
-      <Dead />
       <div>
         <div class="MuiContainer-root MuiContainer-maxWidthLg">
           <div
@@ -35,7 +35,7 @@
                   >
                     <h2 style="font-size: 24px">対策病床使用率(参考)※</h2>
                     <h2 style="font-size: 40px">
-                      {{ graphData[0].secure_bed }} %
+                       %
                     </h2>
                     <h2 style="background: rgb(255, 128, 128)">ステージ3</h2>
                   </div>
@@ -58,7 +58,7 @@
                     <div>
                       <h2 style="font-size: 24px">累計感染者数</h2>
                       <h2 style="font-size: 32px">
-                        {{ graphData[0].inpatient }} 人
+                         人
                       </h2>
                       <h3 style="font-size: 24px">前日比：＋22,828人</h3>
                       <h3 style="font-size: 24px">前々日比：＋42,055人</h3>
@@ -110,7 +110,7 @@
               </div>
             </div>
             <p style="text-align: center; font-size: 24px">
-              感染者数 更新日：{{ graphData[0].update }}
+              感染者数 更新日：
               <br />※対策病床使用率(参考) = 現在患者 / 新型コロナ対策病床数<br /><a
                 href="https://corona.go.jp/dashboard/"
                 target="_blunk"
@@ -157,62 +157,85 @@
 
 <script>
 import axios from 'axios'
-import Dead from '../components/index/TotalDead.vue'
+import Papa from 'papaparse'
+
+
+function getData () {
+  return Promise.all([
+    // 対策病床使用率
+    axios.get(process.env.API_URL + 'https://www.stopcovid19.jp/data/covid19japan_beds/latest.json'),
+    // 累計感染者数
+    axios.get(process.env.API_URL + 'https://www3.nhk.or.jp/n-data/opendata/coronavirus/nhk_news_covid19_prefectures_daily_data.csv'),
+    // 累計死亡者数
+    axios.get(process.env.API_URL + 'https://www.google.com/url?q=https://www.mhlw.go.jp/content/death_total.csv&sa=D&source=editors&ust=1629881448345000&usg=AOvVaw1tyTCS5ZjpOZ14MGkBLp8i'),
+    // PCR検査陽性
+    axios.get(process.env.API_URL + 'https://data.corona.go.jp/converted-json/covid19japan-npatients.json'),
+
+  ]).then(([usebed, corona, dead ,pcr]) => {
+
+    const ppdata = Papa.parse(pcr.data, {
+      // csvヘッダーをプロパティに変更
+      header: true,
+      // 文字列を数値に変換
+      dynamicTyping: true,
+      // 文字化け防止
+      encoding: 'Shift-JIS',
+      // エラーを取り除く
+      skipEmptyLines: true,
+      transformHeader(header) {
+        if (header === '各地の感染者数_1日ごとの発表数') {
+          return 'daily_infection'
+        } else if (header === '各地の感染者数_累計') {
+          return 'total_infection'
+        } else if (header === '各地の死者数_1日ごとの発表数') {
+          return 'daily_dead'
+        } else if (header === '各地の死者数_累計') {
+          return 'total_dead'
+        } else if (header === '日付') {
+          return 'date'
+        } else if (header === '都道府県コード') {
+          return 'pref_code'
+        } else if (header === '都道府県名') {
+          return 'pref_name'
+        } else {
+          return 'default'
+        }
+      },
+    })
+
+    const data = {}
+    data.usebed = usebed.data
+    data.corona = corona.data
+    data.dead = dead.data
+    data.pcr = ppdata
+    return Promise.resolve(data)
+  })
+}
 
 export default {
-  components: { Dead },
 
-  asyncData() {
-    return axios
-      .get('https://www.stopcovid19.jp/data/covid19japan_beds/latest.json')
-      .then((response) => {
-        return {
-          graphData: response.data,
-        }
-      })
+  async asyncData () {
+    const data = await getData()
+    // eslint-disable-next-line no-unused-expressions
+    return {
+    usebed : data.usebed,
+    corona : data.corona,
+    dead : data.dead,
+    pcr : data.pcr
+    }
+    
+
   },
+
+
 
   data() {
     return {
-      // graphData: [],
-      showModal: false,
-      postItem: '',
+
     }
   },
   created() {
-    const tranceData = []
-    for (let i = 0; i < this.graphData.length; i++) {
-      tranceData.push({
-        pcr_positive: this.graphData[i]['PCR検査陽性者数'],
 
-        injured: this.graphData[i]['うち重症者数'],
-
-        secure_bed: this.graphData[i]['入院患者受入確保病床'],
-
-        use_bed_rate: this.graphData[i]['入院患者病床使用率'],
-
-        inpatient: this.graphData[i]['入院者数'],
-
-        source: this.graphData[i]['出典'],
-
-        update: this.graphData[i]['更新日'],
-
-        home_recuperator: this.graphData[i]['自宅療養者数'],
-
-        prefecture: this.graphData[i]['都道府県名'],
-
-        pref_code: this.graphData[i]['都道府県番号'],
-
-        injured_bed: this.graphData[i]['重症患者受入確保病床数'],
-
-        use_injured_bed_rate: this.graphData[i]['重症患者病床使用率'],
-      })
-    }
-    this.graphData = tranceData
-    // eslint-disable-next-line no-console
-    console.log(this.graphData)
-    // eslint-disable-next-line no-console
-    console.log(this.graphData2)
   },
 }
 </script>
