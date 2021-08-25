@@ -71,6 +71,7 @@ export default {
             hoverBackgroundColor: 'red',
             data: this.chartData,
             lineTension: 0.5,
+            pointRadius: 1.5,
             fill: true,
           },
         ],
@@ -97,6 +98,10 @@ export default {
               },
             },
           ],
+        },
+        brush: {
+          target: [1, 2, 3, 4, 5],
+          enabled: true,
         },
         responsive: true,
         maintainAspectRatio: false,
@@ -150,6 +155,7 @@ export default {
             hoverBackgroundColor: 'red',
             data: this.dailyChartData,
             lineTension: 0.5,
+            pointRadius: 1.5,
             fill: true,
           },
         ],
@@ -211,10 +217,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.small {
-  max-width: 600px;
-  margin: 150px auto;
-}
-</style>

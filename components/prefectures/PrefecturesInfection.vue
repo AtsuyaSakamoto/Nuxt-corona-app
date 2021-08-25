@@ -1,31 +1,33 @@
 <template>
-  <div class="text-center">
-    <h2 class="text-2xl mb-2">都道府県別感染者数</h2>
-    <div class="m-auto inline-block bg-teal-400">
-      <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
+  <div class="small">
+    <div class="text-center">
+      <h2 class="text-2xl mb-2">都道府県別感染者数</h2>
+      <div class="m-auto inline-block bg-teal-400">
+        <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
 
-      <input
-        id="graphChoice1"
-        type="radio"
-        name="selectGraph"
-        value="1"
-        checked
-        class="form-radio"
-        @change="changeGraphTerm"
-      />
-      <label for="graphChoice1" class="inline-flex items-center">累計</label>
-      <input
-        id="graphChoice2"
-        type="radio"
-        name="selectGraph"
-        value="2"
-        class="form-radio"
-        @change="changeGraphTerm"
-      />
-      <label for="graphChoice2" class="inline-flex items-center">日別</label>
+        <input
+          id="graphChoice1"
+          type="radio"
+          name="selectGraph"
+          value="1"
+          checked
+          class="form-radio"
+          @change="changeGraphTerm"
+        />
+        <label for="graphChoice1" class="inline-flex items-center">累計</label>
+        <input
+          id="graphChoice2"
+          type="radio"
+          name="selectGraph"
+          value="2"
+          class="form-radio"
+          @change="changeGraphTerm"
+        />
+        <label for="graphChoice2" class="inline-flex items-center">日別</label>
+      </div>
+
+      <Chart :chart-data="datacollection" :options="graphOption"></Chart>
     </div>
-
-    <Chart :chart-data="datacollection" :options="graphOption"></Chart>
   </div>
 </template>
 
@@ -65,12 +67,13 @@ export default {
         datasets: [
           {
             label: '累計感染者数',
-            backgroundColor: 'orange',
+            backgroundColor: 'rgba(255,0,0,0.5)',
             borderWidth: '0.1',
             borderColor: 'red',
-            hoverBackgroundColor: 'red',
+            hoverBackgroundColor: 'rgba(255,0,0,0.5)',
             data: this.chartData,
             lineTension: 0.5,
+            // pointRadius: 3,
             fill: true,
           },
         ],
@@ -144,12 +147,13 @@ export default {
         datasets: [
           {
             label: '累計感染者数',
-            backgroundColor: 'orange',
+            backgroundColor: 'rgba(255,0,0,0.5)',
             borderWidth: '0.1',
             borderColor: 'red',
-            hoverBackgroundColor: 'red',
+            hoverBackgroundColor: 'rgba(255,0,0,0.5)',
             data: this.dailyChartData,
             lineTension: 0.5,
+            pointRadius: 0,
             fill: true,
           },
         ],
@@ -203,3 +207,10 @@ export default {
   },
 }
 </script>
+
+<style>
+.small {
+  max-width: 600px;
+  margin: 100px auto;
+}
+</style>

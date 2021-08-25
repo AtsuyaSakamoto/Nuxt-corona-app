@@ -1,5 +1,5 @@
 <template>
-  <div class="small">
+  <div>
     <PrefecturesInfection />
     <PrefecturesDead />
   </div>

@@ -5,8 +5,6 @@ export const state = () => ({
 export const mutations = {
   setPrefecturesData(state, prefecturesData) {
     state.prefecturesData = prefecturesData
-    // eslint-disable-next-line no-console
-    console.log('axios1回目')
   },
 }
 
