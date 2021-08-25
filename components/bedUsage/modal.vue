@@ -10,7 +10,6 @@
             modalData.use_bed_rate_hospitalization
           }}%
         </p>
-
         <div class="modalContent">
           <Chart :chart-data="da" />
           <p>PCR検査要請者数：{{ modalData.per_positive }}人</p>
@@ -28,11 +27,9 @@
     </vue-final-modal>
   </div>
 </template>
-
 <script>
 import Chart from './Chart1'
 // import Chart from '../prefectures/Chart.js'
-
 export default {
   components: {
     Chart,
@@ -43,36 +40,15 @@ export default {
       default: () => {},
     },
   },
-
   data() {
     return {
       da: {},
       showModal: false,
-      // chart: {
-      //   labels: ['推定病床残数', '入院者数'],
-      //   datasets: [
-      //     {
-      //       backgroundColor: [
-      //         'rgba(255, 60, 60, 0.3)',
-      //         'rgba(60, 60, 60, 0.3)',
-      //       ],
-      //       // data:[Number(this.modalData.beds_num_hospitalization) - Number(this.modalData.num_hospitalization),Number(this.modalData.num_hospitalization)]
-      //       data: [20, 100],
-      //     },
-      //   ],
-      // },
-      // options: {
-      //   responsive: true,
-      //   maintainAspectRatio: false,
-      // },
     }
   },
   beforeUpdate() {
-    // this.modalData
-    // console.log(this.props.modalData)
     this.fillData()
   },
-
   methods: {
     show() {
       this.showModal = true
@@ -80,7 +56,6 @@ export default {
     fillData() {
       this.da = {
         labels: ['推定病床残数', '入院者数'],
-
         datasets: [
           {
             backgroundColor: [
@@ -91,11 +66,7 @@ export default {
               Number(this.modalData.beds_num_hospitalization) -
                 Number(this.modalData.num_hospitalization),
               Number(this.modalData.num_hospitalization),
-              // 100 - parseFloat(this.modalData.use_bed_rate_hospitalization),
-
-              // parseFloat(this.modalData.use_bed_rate_hospitalization),
             ],
-            // data: [20, 100],
           },
         ],
       }

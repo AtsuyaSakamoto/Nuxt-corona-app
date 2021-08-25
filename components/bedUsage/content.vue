@@ -50,7 +50,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import Modal from './modal.vue'
 export default {
