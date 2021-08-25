@@ -1,33 +1,35 @@
 <template>
-  <div class="small">
-    <div class="text-center">
-      <h2 class="text-2xl mb-2">都道府県別感染者数</h2>
-      <div class="m-auto inline-block bg-teal-400">
-        <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
+  <div class="text-center">
+    <h2 class="text-2xl mb-2">都道府県別感染者数</h2>
+    <div class="m-auto inline-block bg-teal-400">
+      <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
 
-        <input
-          id="graphChoice1"
-          type="radio"
-          name="selectGraph"
-          value="1"
-          checked
-          class="form-radio"
-          @change="changeGraphTerm"
-        />
-        <label for="graphChoice1" class="inline-flex items-center">累計</label>
-        <input
-          id="graphChoice2"
-          type="radio"
-          name="selectGraph"
-          value="2"
-          class="form-radio"
-          @change="changeGraphTerm"
-        />
-        <label for="graphChoice2" class="inline-flex items-center">日別</label>
-      </div>
-
-      <Chart :chart-data="datacollection" :options="graphOption"></Chart>
+      <input
+        id="graphChoice1"
+        type="radio"
+        name="selectGraph"
+        value="1"
+        checked
+        class="form-radio"
+        @change="changeGraphTerm"
+      />
+      <label for="graphChoice1" class="inline-flex items-center">累計</label>
+      <input
+        id="graphChoice2"
+        type="radio"
+        name="selectGraph"
+        value="2"
+        class="form-radio"
+        @change="changeGraphTerm"
+      />
+      <label for="graphChoice2" class="inline-flex items-center">日別</label>
     </div>
+
+    <Chart
+      :chart-data="datacollection"
+      :options="graphOption"
+      :styles="myStyles"
+    ></Chart>
   </div>
 </template>
 
@@ -50,12 +52,14 @@ export default {
       dailyChartData: [],
       graphSwich: true,
       graphOption: Object,
+      myStyles: { height: '600px', posision: 'relative' },
     }
   },
 
   created() {
     this.fillData()
   },
+
   methods: {
     fillData() {
       this.getLabels()
@@ -74,7 +78,6 @@ export default {
             data: this.chartData,
             lineTension: 0,
             fill: true,
-            boxWidth: 10,
           },
         ],
       }
@@ -137,6 +140,7 @@ export default {
         this.dailyGraph()
       }
     },
+    // 日別グラフへの切り替え
     dailyGraph() {
       this.getTodayLabels()
       this.getTodayChartData()
@@ -201,6 +205,7 @@ export default {
         }
       })
     },
+    // 累計グラフと日別グラフの処理を管理
     changeGraphTerm(e) {
       e.target.value === '2' ? this.dailyGraph() : this.fillData()
       this.graphSwich = !this.graphSwich
@@ -208,10 +213,3 @@ export default {
   },
 }
 </script>
-
-<style>
-/* .small { */
-/* max-width: 600px; */
-/* margin: 100px auto; */
-/* } */
-</style>
