@@ -59,7 +59,6 @@
         </div>
       </div>
 
-      <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
       <div class="items-center md:flex">
         <div class="flex flex-col md:flex-row md:mx-6">
           <NuxtLink
