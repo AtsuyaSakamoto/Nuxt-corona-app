@@ -1,7 +1,7 @@
 <template>
-  <div class="small">
-    <PrefecturesInfection />
-    <PrefecturesDead />
+  <div class="flex flex-row pt-20">
+    <div class="shadow-lg p-5 mx-8 w-1/2"><PrefecturesInfection /></div>
+    <div class="shadow-lg p-5 mx-8 w-1/2"><PrefecturesDead /></div>
   </div>
 </template>
 
@@ -18,8 +18,6 @@ export default {
   },
 
   async fetch(context) {
-    // eslint-disable-next-line no-console
-    console.log('テスト')
     const result = await axios.get(
       'https://www3.nhk.or.jp/n-data/opendata/coronavirus/nhk_news_covid19_prefectures_daily_data.csv'
     )
@@ -52,9 +50,8 @@ export default {
         }
       },
     })
-    // eslint-disable-next-line no-console
-    console.log(parsedata.data)
-    context.store.dispatch('setPrefecturesData', parsedata.data)
+
+    context.store.dispatch('prefectures/setPrefecturesData', parsedata.data)
   },
 }
 </script>

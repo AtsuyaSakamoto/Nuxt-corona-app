@@ -1,7 +1,7 @@
 <template>
   <body style="">
     <div id="root">
-        <Dead/>
+      <Dead />
       <div>
         <div class="MuiContainer-root MuiContainer-maxWidthLg">
           <div
@@ -35,8 +35,8 @@
                   >
                     <h2 style="font-size: 24px">対策病床使用率(参考)※</h2>
                     <h2 style="font-size: 40px">
-                      {{graphData[0].secure_bed}}  %
-                      </h2>
+                      {{ graphData[0].secure_bed }} %
+                    </h2>
                     <h2 style="background: rgb(255, 128, 128)">ステージ3</h2>
                   </div>
                 </div>
@@ -57,7 +57,9 @@
                   >
                     <div>
                       <h2 style="font-size: 24px">累計感染者数</h2>
-                      <h2 style="font-size: 32px"> {{graphData[0].inpatient}} 人</h2>
+                      <h2 style="font-size: 32px">
+                        {{ graphData[0].inpatient }} 人
+                      </h2>
                       <h3 style="font-size: 24px">前日比：＋22,828人</h3>
                       <h3 style="font-size: 24px">前々日比：＋42,055人</h3>
                     </div>
@@ -108,8 +110,8 @@
               </div>
             </div>
             <p style="text-align: center; font-size: 24px">
-              感染者数 更新日：{{ graphData[0].update }} <br />※対策病床使用率(参考) = 現在患者
-              / 新型コロナ対策病床数<br /><a
+              感染者数 更新日：{{ graphData[0].update }}
+              <br />※対策病床使用率(参考) = 現在患者 / 新型コロナ対策病床数<br /><a
                 href="https://corona.go.jp/dashboard/"
                 target="_blunk"
                 rel="noopener noreferrer"
@@ -145,7 +147,6 @@
                 <p class="jss13">M.T</p>
                 <p class="jss13">T.A</p>
               </div>
-
             </div>
           </div>
         </div>
@@ -173,13 +174,13 @@ export default {
 
   data() {
     return {
-      graphData: [],
+      // graphData: [],
       showModal: false,
       postItem: '',
     }
   },
   created() {
-        const tranceData = []
+    const tranceData = []
     for (let i = 0; i < this.graphData.length; i++) {
       tranceData.push({
         pcr_positive: this.graphData[i]['PCR検査陽性者数'],
@@ -210,6 +211,8 @@ export default {
     this.graphData = tranceData
     // eslint-disable-next-line no-console
     console.log(this.graphData)
+    // eslint-disable-next-line no-console
+    console.log(this.graphData2)
   },
 }
 </script>
