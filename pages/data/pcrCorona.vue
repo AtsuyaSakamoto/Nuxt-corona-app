@@ -4,7 +4,7 @@
 
 <script>
 import axios from "axios"
-import Content from "../../components/ pcrCorona/content.vue"
+import Content from "../../components/pcrCorona/content.vue"
 export default{
   components:{
     Content
