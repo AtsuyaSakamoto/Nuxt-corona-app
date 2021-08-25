@@ -1,31 +1,33 @@
 <template>
-  <div class="text-center">
-    <h2 class="text-2xl mb-2">都道府県別死者数</h2>
-    <div class="m-auto inline-block bg-teal-400">
-      <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
+  <div class="small">
+    <div class="text-center">
+      <h2 class="text-2xl mb-2">都道府県別死者数</h2>
+      <div class="m-auto inline-block bg-teal-400">
+        <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
 
-      <input
-        id="graphChoice3"
-        type="radio"
-        name="selectGraph2"
-        value="1"
-        checked
-        class="form-radio"
-        @change="changeGraphTerm"
-      />
-      <label for="graphChoice3">累計</label>
-      <input
-        id="graphChoice4"
-        type="radio"
-        name="selectGraph2"
-        value="2"
-        class="form-radio"
-        @change="changeGraphTerm"
-      />
-      <label for="graphChoice4" class="inline-flex items-center">日別</label>
+        <input
+          id="graphChoice3"
+          type="radio"
+          name="selectGraph2"
+          value="1"
+          checked
+          class="form-radio"
+          @change="changeGraphTerm"
+        />
+        <label for="graphChoice3">累計</label>
+        <input
+          id="graphChoice4"
+          type="radio"
+          name="selectGraph2"
+          value="2"
+          class="form-radio"
+          @change="changeGraphTerm"
+        />
+        <label for="graphChoice4" class="inline-flex items-center">日別</label>
+      </div>
+
+      <Chart :chart-data="datacollection" :options="graphOption"></Chart>
     </div>
-
-    <Chart :chart-data="datacollection" :options="graphOption"></Chart>
   </div>
 </template>
 
@@ -65,14 +67,14 @@ export default {
         datasets: [
           {
             label: '累計死者数',
-            backgroundColor: 'orange',
+            backgroundColor: 'rgba(255,0,0,0.5)',
             borderWidth: '0.1',
             borderColor: 'red',
-            hoverBackgroundColor: 'red',
+            hoverBackgroundColor: 'rgba(255,0,0,0.5)',
             data: this.chartData,
-            lineTension: 0.5,
-            pointRadius: 1.5,
+            lineTension: 0,
             fill: true,
+            boxWidth: 10,
           },
         ],
       }
@@ -148,15 +150,16 @@ export default {
 
         datasets: [
           {
-            label: '累計死者数',
-            backgroundColor: 'orange',
+            label: '日別死者数',
+            backgroundColor: 'rgba(255,0,0,0.5)',
             borderWidth: '0.1',
             borderColor: 'red',
-            hoverBackgroundColor: 'red',
+            hoverBackgroundColor: 'rgba(255,0,0,0.5)',
             data: this.dailyChartData,
             lineTension: 0.5,
-            pointRadius: 1.5,
+            pointRadius: 0,
             fill: true,
+            boxWidth: 10,
           },
         ],
       }
@@ -217,3 +220,10 @@ export default {
   },
 }
 </script>
+
+<style>
+/* .small { */
+/* max-width: 1000px; */
+/* margin: 100px auto; */
+/* } */
+</style>

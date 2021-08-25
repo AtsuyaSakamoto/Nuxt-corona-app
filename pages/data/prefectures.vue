@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <PrefecturesInfection />
-    <PrefecturesDead />
+  <div class="flex flex-row pt-20">
+    <div class="shadow-lg p-5 mx-8 w-1/2"><PrefecturesInfection /></div>
+    <div class="shadow-lg p-5 mx-8 w-1/2"><PrefecturesDead /></div>
   </div>
 </template>
 

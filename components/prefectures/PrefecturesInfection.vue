@@ -72,9 +72,9 @@ export default {
             borderColor: 'red',
             hoverBackgroundColor: 'rgba(255,0,0,0.5)',
             data: this.chartData,
-            lineTension: 0.5,
-            // pointRadius: 3,
+            lineTension: 0,
             fill: true,
+            boxWidth: 10,
           },
         ],
       }
@@ -146,7 +146,7 @@ export default {
 
         datasets: [
           {
-            label: '累計感染者数',
+            label: '日別感染者数',
             backgroundColor: 'rgba(255,0,0,0.5)',
             borderWidth: '0.1',
             borderColor: 'red',
@@ -155,6 +155,7 @@ export default {
             lineTension: 0.5,
             pointRadius: 0,
             fill: true,
+            boxWidth: 10,
           },
         ],
       }
@@ -209,8 +210,8 @@ export default {
 </script>
 
 <style>
-.small {
-  max-width: 600px;
-  margin: 100px auto;
-}
+/* .small { */
+/* max-width: 600px; */
+/* margin: 100px auto; */
+/* } */
 </style>

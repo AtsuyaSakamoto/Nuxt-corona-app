@@ -1,13 +1,12 @@
 <template>
-  <!-- <Content :pcr-data-array="pcrDataArray" /> -->
-  <h1>aaaa</h1>
+  <Content :pcr-data-array="pcrDataArray" />
 </template>
 <script>
 import axios from 'axios'
-// import Content from '../../components/ pcrCorona/content.vue'
+import Content from '../../components/pcrCorona/content.vue'
 export default {
   components: {
-    // Content,
+    Content,
   },
   async fetch({ store }) {
     await axios
