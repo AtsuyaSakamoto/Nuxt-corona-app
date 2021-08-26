@@ -1,6 +1,4 @@
 <template>
-  <body style="">
-    <div> {{ usebed }} </div>
     <div id="root">
       <div>
         <div class="MuiContainer-root MuiContainer-maxWidthLg">
@@ -13,7 +11,7 @@
               border-width: 2px;
             "
           >
-            <h1 style="text-align: center">
+            <h1 style="text-align: center" class="bg-teal-200">
               新型コロナウイルス 日本国内の状況
             </h1>
             <div class="jss860">
@@ -35,7 +33,8 @@
                   >
                     <h2 style="font-size: 24px">対策病床使用率(参考)※</h2>
                     <h2 style="font-size: 40px">
-                       %
+                      {{ Math.round(((usebed.reduce((a ,b) => a + Number(b["入院者数"]), 0)) / (usebed.reduce((a ,b) => a + Number(b["入院患者受入即応病床数"]), 0)))*10000)/100 }} %
+
                     </h2>
                     <h2 style="background: rgb(255, 128, 128)">ステージ3</h2>
                   </div>
@@ -58,10 +57,11 @@
                     <div>
                       <h2 style="font-size: 24px">累計感染者数</h2>
                       <h2 style="font-size: 32px">
-                         人
+                        {{ corona[corona.length - 1]["npatients"] }} 人
                       </h2>
-                      <h3 style="font-size: 24px">前日比：＋22,828人</h3>
-                      <h3 style="font-size: 24px">前々日比：＋42,055人</h3>
+
+                      <h3 style="font-size: 24px">前日比：{{ corona[corona.length - 1]["npatients"] - corona[corona.length - 2]["npatients"] }} ＋人</h3>
+                      <h3 style="font-size: 24px">前々日比：{{ corona[corona.length - 1]["npatients"] - corona[corona.length - 3]["npatients"] }}  ＋人</h3>
                     </div>
                   </div>
                 </div>
@@ -81,9 +81,9 @@
                     "
                   >
                     <h2 style="font-size: 24px">累計死亡者数</h2>
-                    <h2 style="font-size: 32px">15,494人</h2>
-                    <h3 style="font-size: 24px">前日比：＋34人</h3>
-                    <h3 style="font-size: 24px">前々日比：＋70人</h3>
+                    <h2 style="font-size: 32px">{{ dead[dead.length - 1]["ndeaths"] }} 人</h2>
+                    <h3 style="font-size: 24px">前日比：＋ {{ dead[dead.length - 1]["ndeaths"] - dead[dead.length - 2]["ndeaths"] }} 人</h3>
+                    <h3 style="font-size: 24px">前々日比：＋ {{ dead[dead.length - 1]["ndeaths"] - dead[dead.length - 3]["ndeaths"] }} 人</h3>
                   </div>
                 </div>
                 <div
@@ -102,9 +102,9 @@
                     "
                   >
                     <h2 style="font-size: 24px">PCR検査陽性率</h2>
-                    <h2 style="font-size: 32px">18.18%</h2>
-                    <h3 style="font-size: 24px">前日：16.90%</h3>
-                    <h3 style="font-size: 24px">前々日：14.23%</h3>
+                    <h2 style="font-size: 32px">{{ Math.round(pcr[pcr.length - 1]["adpatients"] / (pcr[pcr.length - 1]["npatients"] + pcr[pcr.length - 1]["adpatients"]) * 100000) / 100 }} % %</h2>
+                    <h3 style="font-size: 24px">前日：{{ Math.round(pcr[pcr.length - 2]["adpatients"] / (pcr[pcr.length - 2]["npatients"] + pcr[pcr.length - 2]["adpatients"]) * 100000) / 100 }} % %</h3>
+                    <h3 style="font-size: 24px">前々日：{{ Math.round(pcr[pcr.length - 3]["adpatients"] / (pcr[pcr.length - 3]["npatients"] + pcr[pcr.length - 3]["adpatients"]) * 100000) / 100 }} % %</h3>
                   </div>
                 </div>
               </div>
@@ -152,12 +152,11 @@
         </div>
       </footer>
     </div>
-  </body>
 </template>
 
 <script>
 import axios from 'axios'
-import Papa from 'papaparse'
+
 
 
 function getData () {
@@ -165,49 +164,19 @@ function getData () {
     // 対策病床使用率
     axios.get(process.env.API_URL + 'https://www.stopcovid19.jp/data/covid19japan_beds/latest.json'),
     // 累計感染者数
-    axios.get(process.env.API_URL + 'https://www3.nhk.or.jp/n-data/opendata/coronavirus/nhk_news_covid19_prefectures_daily_data.csv'),
-    // 累計死亡者数
-    axios.get(process.env.API_URL + 'https://www.google.com/url?q=https://www.mhlw.go.jp/content/death_total.csv&sa=D&source=editors&ust=1629881448345000&usg=AOvVaw1tyTCS5ZjpOZ14MGkBLp8i'),
-    // PCR検査陽性
+    axios.get(process.env.API_URL + 'https://data.corona.go.jp/converted-json/covid19japan-npatients.json'),
+    // // 累計死亡者数
+    axios.get(process.env.API_URL + 'https://data.corona.go.jp/converted-json/covid19japan-ndeaths.json'),
+    // // PCR検査陽性
     axios.get(process.env.API_URL + 'https://data.corona.go.jp/converted-json/covid19japan-npatients.json'),
 
-  ]).then(([usebed, corona, dead ,pcr]) => {
-
-    const ppdata = Papa.parse(pcr.data, {
-      // csvヘッダーをプロパティに変更
-      header: true,
-      // 文字列を数値に変換
-      dynamicTyping: true,
-      // 文字化け防止
-      encoding: 'Shift-JIS',
-      // エラーを取り除く
-      skipEmptyLines: true,
-      transformHeader(header) {
-        if (header === '各地の感染者数_1日ごとの発表数') {
-          return 'daily_infection'
-        } else if (header === '各地の感染者数_累計') {
-          return 'total_infection'
-        } else if (header === '各地の死者数_1日ごとの発表数') {
-          return 'daily_dead'
-        } else if (header === '各地の死者数_累計') {
-          return 'total_dead'
-        } else if (header === '日付') {
-          return 'date'
-        } else if (header === '都道府県コード') {
-          return 'pref_code'
-        } else if (header === '都道府県名') {
-          return 'pref_name'
-        } else {
-          return 'default'
-        }
-      },
-    })
+  ]).then(([usebed,corona,dead,pcr]) => {
 
     const data = {}
     data.usebed = usebed.data
     data.corona = corona.data
     data.dead = dead.data
-    data.pcr = ppdata
+    data.pcr = pcr.data
     return Promise.resolve(data)
   })
 }
@@ -223,7 +192,6 @@ export default {
     dead : data.dead,
     pcr : data.pcr
     }
-    
 
   },
 
@@ -235,7 +203,7 @@ export default {
     }
   },
   created() {
-
   },
+
 }
 </script>
