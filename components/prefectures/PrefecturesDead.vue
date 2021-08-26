@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <h2 class="text-2xl mb-2 text-white">都道府県別死者数</h2>
-    <div class="m-auto inline-block bg-teal-400">
+    <div class="inline-block bg-teal-400">
       <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
 
       <input
@@ -63,7 +63,7 @@ export default {
       dailyChartData: [],
       graphSwich: true,
       graphOption: Object,
-      myStyles: { height: '600px', posision: 'relative' },
+      myStyles: { posision: 'relative' },
     }
   },
 
