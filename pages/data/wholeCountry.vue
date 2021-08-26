@@ -1,5 +1,5 @@
 <template>
-  <div> {{data}} </div>
+  <div>aaa</div>
 </template>
 
 <script>
@@ -9,22 +9,23 @@ import { mapGetters } from 'vuex'
 // import wholeDead from '../../components/wholeCountry/WholeDead.vue'
 // import WholeCorona from '../../components/wholeCountry/WholeCorona.vue'
 
-
-function getData () {
+function getData() {
   return Promise.all([
     // // 日別感染者
     // axios.get(process.env.API_URL + 'https://www.google.com/url?q=https://www.mhlw.go.jp/content/pcr_positive_daily.csv&sa=D&source=editors&ust=1629958775531000&usg=AOvVaw1IKQ_cxJeVkIA5Nfl8BIlg'),
     // 累計感染者数
-    axios.get(process.env.API_URL + 'https://data.corona.go.jp/converted-json/covid19japan-npatients.json'),
+    axios.get(
+      process.env.API_URL +
+        'https://data.corona.go.jp/converted-json/covid19japan-npatients.json'
+    ),
     // // 日別死者数
     // axios.get(process.env.API_URL + 'https://www.google.com/url?q=https://www.mhlw.go.jp/content/death_total.csv&sa=D&source=editors&ust=1629958650569000&usg=AOvVaw3bcVGxRcQZa9U1dU9fqaS1'),
     // 累計死亡者数
-    axios.get(process.env.API_URL + 'https://data.corona.go.jp/converted-json/covid19japan-ndeaths.json'),
-
-  ]).then(([totalcorona,totaldead]) => {
-
-
-
+    axios.get(
+      process.env.API_URL +
+        'https://data.corona.go.jp/converted-json/covid19japan-ndeaths.json'
+    ),
+  ]).then(([totalcorona, totaldead]) => {
     const data = {}
     // data.daycorona = daycorona.data
     data.totalcorona = totalcorona.data
@@ -36,9 +37,9 @@ function getData () {
 }
 
 export default {
-  data(){
+  data() {
     return {
-      data:[]
+      data: [],
     }
   },
   // components: {
@@ -46,20 +47,18 @@ export default {
   //   WholeCorona,
   // },
 
-  async fetch (context) {
+  async fetch(context) {
     const data = await getData()
     // eslint-disable-next-line no-unused-expressions
     // daycorona : data.daycorona,
-    context.store.dispatch("wholecountry/setWholeCountryData", data.totalcorona,)
-    context.store.dispatch("wholecountry2/setWholeCountry2Data", data.totaldead,)
-    
+    context.store.dispatch('wholecountry/setWholeCountryData', data.totalcorona)
+    context.store.dispatch('wholecountry2/setWholeCountry2Data', data.totaldead)
 
     // totalcorona : data.totalcorona,
     // // daydead : data.daydead,
     // totaldead : data.totaldead,
-
   },
-  conputed:{
+  conputed: {
     ...mapGetters(['wholeCountryData']),
   },
   created() {
@@ -67,6 +66,5 @@ export default {
     console.log(this.$store.state.wholecountry.wholeCountryData)
     this.data = this.$store.state.wholecountry.wholeCountryData
   },
-
 }
 </script>
