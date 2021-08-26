@@ -2,7 +2,7 @@
   <div class="bg-gray-900 bg-opacity-95">
     <h1 class="text-white text-center text-3xl py-11">PCR検査数と陽性者数の推移</h1>
     <div class="">
-    <LineChart :chart-data="dataArry" :options="options"/>
+      <LineChart :chart-data="dataArry" :options="options"/>
     </div>
   </div>
 </template>
@@ -75,9 +75,9 @@ export default{
                             display: true,                // 表示設定
                             fontColor: "white", // 文字の色
                         },
-                        gridLines: {  // 補助線
-                            color: "white", // 補助線の色
-                        },
+                        // gridLines: {  // 補助線
+                        //     color: "white", // 補助線の色
+                        // },
                         ticks: { // 目盛り
                             fontColor: "white", // 目盛りの色
                         }

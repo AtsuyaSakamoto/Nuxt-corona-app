@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-red-100 shadow-md p-5 rounded lg:w-30 mt-3 mx-36">
+<div class="bg-gray-900 pt-10">
+
+  <div class="bg-red-100 shadow-md p-5 rounded lg:w-30  mx-36">
     <h1 class="text-center text-4xl mb-5">About</h1>
     <h2 class="text-xl mb-3 font-bold">当サイトに関して</h2>
     <p class="mb-3">
@@ -96,4 +98,7 @@
     <h3 class="mt-1">2021-09-01</h3>
     <h3 class="mt-1">サイトを開設しました</h3>
   </div>
+</div>
 </template>
+
+</div>
