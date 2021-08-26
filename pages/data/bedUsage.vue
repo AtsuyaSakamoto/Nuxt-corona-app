@@ -1,12 +1,15 @@
 <template>
-<div class="bg-gray-900">
-  <Content  :data-arry = "bedUsage"/>
-</div>
+  <div class="bg-gray-900">
+    <Content  :data-arry = "bedUsage"/>
+  </div>
 </template>
+
+//子要素（src/components/bedUsage/content.vueに取得した情報を渡す）
 
 <script>
 import axios from "axios"
 import Content from '../../components/bedUsage/content.vue'
+
 export default{
   components:{
     Content
@@ -19,7 +22,7 @@ export default{
   },
   computed:{
     bedUsage(){
-      return this.$store.state.bedusage.bedUsage
+      return this.$store.state.bedusage.bedUsageData
     }
   }
 }

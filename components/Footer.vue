@@ -1,3 +1,7 @@
 <template>
-  <h1></h1>
+  <footer>
+    <div class="bg-gray-900 border-t h-12 text-white">
+      <h2 class="text-center mt-3 ml-5">©2021 Rakuraku Corona</h2>
+    </div>
+  </footer>
 </template>
