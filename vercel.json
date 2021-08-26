@@ -1,18 +1,9 @@
 {
-<<<<<<< HEAD
-=======
   "version": 2,
->>>>>>> 253fea2842dfdccbed55816846f321ba6a4be337
   "builds": [
     {
       "src": "nuxt.config.js",
       "use": "@nuxtjs/vercel-builder",
-<<<<<<< HEAD
-      "config": {}
-    }
-  ]
-}
-=======
       "config": {
         "serverFiles": ["package.json"]
       }
@@ -31,4 +22,3 @@
     { "src": "/(.*)", "dest": "/" }
   ]
 }
->>>>>>> 253fea2842dfdccbed55816846f321ba6a4be337
