@@ -1,0 +1,28 @@
+<template>
+  <div class="m-10">
+    <h1 class="text-center mb-5">都道府県別病床使用率(データ更新日：</h1>
+      <div class="grid grid-cols-2 gap-6 mb-8 sm:grid-cols-4 lg:grid-cols-6">
+      <!-- Card 1 -->
+      <div v-for="data in dataArry"></div>
+      <div class="flex items-center p-4 bg-white border-2 border-gray-200 rounded-lg shadow-sm dark:bg-gray-800">
+        <div>
+          <p class="mb-2 text-center text-md font-medium text-gray-900">Projects</p>
+          <p class="text-sm font-normal text-gray-800">Unlimted projects for you</p>
+        </div>
+      </div>
+
+  </div>
+    <!-- <Modal v-if="showModal" :val="postItem" @close="closeModal"></Modal> -->
+  </div>
+</template>
+
+<script>
+export default{
+  props: {
+    dataArry:{
+      type: Array,
+      default: () => []
+    }
+  }
+}
+</script>
