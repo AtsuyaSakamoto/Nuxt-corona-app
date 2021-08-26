@@ -59,7 +59,7 @@ export default {
       this.showModal = true
     },
     fillData() {
-      this.chartData = {
+      this.da = {
         labels: ['推定病床残数', '入院者数'],
         datasets: [
           {

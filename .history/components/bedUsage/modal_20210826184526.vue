@@ -11,7 +11,7 @@
           }}%
         </p>
         <div class="modalContent">
-          <Chart :chart-data="chartData" :styles="styles"/>
+          <Chart :chart-data="aaa" :styles="styles"/>
           <div class="mt-5 text-xs">
             <p>PCR検査要請者数：{{ modalData.per_positive }}人</p>
             <p>うち重傷者数：{{ modalData.num_severe }}人</p>
@@ -46,7 +46,7 @@ export default {
   },
   data() {
     return {
-      chartData: {},
+      aaa: {},
       showModal: false,
        styles: { width: '300px',margin:'auto'}
     }
@@ -59,7 +59,7 @@ export default {
       this.showModal = true
     },
     fillData() {
-      this.chartData = {
+      this.da = {
         labels: ['推定病床残数', '入院者数'],
         datasets: [
           {

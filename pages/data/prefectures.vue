@@ -24,8 +24,7 @@ export default {
       'https://www3.nhk.or.jp/n-data/opendata/coronavirus/nhk_news_covid19_prefectures_daily_data.csv'
     )
     const parsedata = Papa.parse(result.data, {
-      // csvヘッダーをプロパティに変更
-      header: true,
+
       // 文字列を数値に変換
       dynamicTyping: true,
       // 文字化け防止

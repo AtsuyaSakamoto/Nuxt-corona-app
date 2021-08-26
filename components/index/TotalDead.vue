@@ -1,6 +1,6 @@
   <template>
   <div class="m-10">
-    <!-- {{ deadData[1].npatients }} -->
+    
   </div>
 </template>
 

@@ -1,6 +1,5 @@
 <template>
     <div id="root">
-      <Dead />
       <div>
         <div class="MuiContainer-root MuiContainer-maxWidthLg">
           <div
@@ -12,7 +11,7 @@
               border-width: 2px;
             "
           >
-            <h1 style="text-align: center">
+            <h1 style="text-align: center" class="bg-teal-200">
               新型コロナウイルス 日本国内の状況
             </h1>
             <div class="jss860">
@@ -34,7 +33,8 @@
                   >
                     <h2 style="font-size: 24px">対策病床使用率(参考)※</h2>
                     <h2 style="font-size: 40px">
-                      {{ graphData[0].secure_bed }} %
+                      {{ Math.round(((usebed.reduce((a ,b) => a + Number(b["入院者数"]), 0)) / (usebed.reduce((a ,b) => a + Number(b["入院患者受入即応病床数"]), 0)))*10000)/100 }} %
+
                     </h2>
                     <h2 style="background: rgb(255, 128, 128)">ステージ3</h2>
                   </div>
@@ -57,10 +57,11 @@
                     <div>
                       <h2 style="font-size: 24px">累計感染者数</h2>
                       <h2 style="font-size: 32px">
-                        {{ graphData[0].inpatient }} 人
+                        {{ corona[corona.length - 1]["npatients"] }} 人
                       </h2>
-                      <h3 style="font-size: 24px">前日比：＋22,828人</h3>
-                      <h3 style="font-size: 24px">前々日比：＋42,055人</h3>
+
+                      <h3 style="font-size: 24px">前日比：{{ corona[corona.length - 1]["npatients"] - corona[corona.length - 2]["npatients"] }} ＋人</h3>
+                      <h3 style="font-size: 24px">前々日比：{{ corona[corona.length - 1]["npatients"] - corona[corona.length - 3]["npatients"] }}  ＋人</h3>
                     </div>
                   </div>
                 </div>
@@ -80,9 +81,9 @@
                     "
                   >
                     <h2 style="font-size: 24px">累計死亡者数</h2>
-                    <h2 style="font-size: 32px">15,494人</h2>
-                    <h3 style="font-size: 24px">前日比：＋34人</h3>
-                    <h3 style="font-size: 24px">前々日比：＋70人</h3>
+                    <h2 style="font-size: 32px">{{ dead[dead.length - 1]["ndeaths"] }} 人</h2>
+                    <h3 style="font-size: 24px">前日比：＋ {{ dead[dead.length - 1]["ndeaths"] - dead[dead.length - 2]["ndeaths"] }} 人</h3>
+                    <h3 style="font-size: 24px">前々日比：＋ {{ dead[dead.length - 1]["ndeaths"] - dead[dead.length - 3]["ndeaths"] }} 人</h3>
                   </div>
                 </div>
                 <div
@@ -101,15 +102,15 @@
                     "
                   >
                     <h2 style="font-size: 24px">PCR検査陽性率</h2>
-                    <h2 style="font-size: 32px">18.18%</h2>
-                    <h3 style="font-size: 24px">前日：16.90%</h3>
-                    <h3 style="font-size: 24px">前々日：14.23%</h3>
+                    <h2 style="font-size: 32px">{{ Math.round(pcr[pcr.length - 1]["adpatients"] / (pcr[pcr.length - 1]["npatients"] + pcr[pcr.length - 1]["adpatients"]) * 100000) / 100 }} % %</h2>
+                    <h3 style="font-size: 24px">前日：{{ Math.round(pcr[pcr.length - 2]["adpatients"] / (pcr[pcr.length - 2]["npatients"] + pcr[pcr.length - 2]["adpatients"]) * 100000) / 100 }} % %</h3>
+                    <h3 style="font-size: 24px">前々日：{{ Math.round(pcr[pcr.length - 3]["adpatients"] / (pcr[pcr.length - 3]["npatients"] + pcr[pcr.length - 3]["adpatients"]) * 100000) / 100 }} % %</h3>
                   </div>
                 </div>
               </div>
             </div>
             <p style="text-align: center; font-size: 24px">
-              感染者数 更新日：{{ graphData[0].update }}
+              感染者数 更新日：
               <br />※対策病床使用率(参考) = 現在患者 / 新型コロナ対策病床数<br /><a
                 href="https://corona.go.jp/dashboard/"
                 target="_blunk"
@@ -155,62 +156,54 @@
 
 <script>
 import axios from 'axios'
-import Dead from '../components/index/TotalDead.vue'
+
+
+
+function getData () {
+  return Promise.all([
+    // 対策病床使用率
+    axios.get(process.env.API_URL + 'https://www.stopcovid19.jp/data/covid19japan_beds/latest.json'),
+    // 累計感染者数
+    axios.get(process.env.API_URL + 'https://data.corona.go.jp/converted-json/covid19japan-npatients.json'),
+    // // 累計死亡者数
+    axios.get(process.env.API_URL + 'https://data.corona.go.jp/converted-json/covid19japan-ndeaths.json'),
+    // // PCR検査陽性
+    axios.get(process.env.API_URL + 'https://data.corona.go.jp/converted-json/covid19japan-npatients.json'),
+
+  ]).then(([usebed,corona,dead,pcr]) => {
+
+    const data = {}
+    data.usebed = usebed.data
+    data.corona = corona.data
+    data.dead = dead.data
+    data.pcr = pcr.data
+    return Promise.resolve(data)
+  })
+}
 
 export default {
-  components: { Dead },
 
-  asyncData() {
-    return axios
-      .get('https://www.stopcovid19.jp/data/covid19japan_beds/latest.json')
-      .then((response) => {
-        return {
-          graphData: response.data,
-        }
-      })
+  async asyncData () {
+    const data = await getData()
+    // eslint-disable-next-line no-unused-expressions
+    return {
+    usebed : data.usebed,
+    corona : data.corona,
+    dead : data.dead,
+    pcr : data.pcr
+    }
+
   },
+
+
 
   data() {
     return {
-      // graphData: [],
-      showModal: false,
-      postItem: '',
+
     }
   },
   created() {
-    const tranceData = []
-    for (let i = 0; i < this.graphData.length; i++) {
-      tranceData.push({
-        pcr_positive: this.graphData[i]['PCR検査陽性者数'],
-
-        injured: this.graphData[i]['うち重症者数'],
-
-        secure_bed: this.graphData[i]['入院患者受入確保病床'],
-
-        use_bed_rate: this.graphData[i]['入院患者病床使用率'],
-
-        inpatient: this.graphData[i]['入院者数'],
-
-        source: this.graphData[i]['出典'],
-
-        update: this.graphData[i]['更新日'],
-
-        home_recuperator: this.graphData[i]['自宅療養者数'],
-
-        prefecture: this.graphData[i]['都道府県名'],
-
-        pref_code: this.graphData[i]['都道府県番号'],
-
-        injured_bed: this.graphData[i]['重症患者受入確保病床数'],
-
-        use_injured_bed_rate: this.graphData[i]['重症患者病床使用率'],
-      })
-    }
-    this.graphData = tranceData
-    // eslint-disable-next-line no-console
-    // console.log(this.graphData)
-    // eslint-disable-next-line no-console
-    // console.log(this.graphData2)
   },
+
 }
 </script>
