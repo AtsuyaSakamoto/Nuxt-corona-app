@@ -1,33 +1,46 @@
 <template>
-  <div class="small">
-    <div class="text-center">
-      <h2 class="text-2xl mb-2">都道府県別死者数</h2>
-      <div class="m-auto inline-block bg-teal-400">
-        <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
+  <div class="text-center">
+    <h2 class="text-2xl mb-2 text-white">都道府県別死者数</h2>
+    <div class="m-auto inline-block bg-teal-400">
+      <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
 
-        <input
-          id="graphChoice3"
-          type="radio"
-          name="selectGraph2"
-          value="1"
-          checked
-          class="form-radio"
-          @change="changeGraphTerm"
-        />
-        <label for="graphChoice3">累計</label>
-        <input
-          id="graphChoice4"
-          type="radio"
-          name="selectGraph2"
-          value="2"
-          class="form-radio"
-          @change="changeGraphTerm"
-        />
-        <label for="graphChoice4" class="inline-flex items-center">日別</label>
-      </div>
-
-      <Chart :chart-data="datacollection" :options="graphOption"></Chart>
+      <input
+        id="graphChoice3"
+        type="radio"
+        name="selectGraph2"
+        value="1"
+        checked
+        class="form-radio"
+        @change="changeGraphTerm"
+      />
+      <label for="graphChoice3" class="inline-flex items-center text-white"
+        >累計</label
+      >
+      <input
+        id="graphChoice4"
+        type="radio"
+        name="selectGraph2"
+        value="2"
+        class="form-radio"
+        @change="changeGraphTerm"
+      />
+      <label for="graphChoice4" class="inline-flex items-center text-white"
+        >日別</label
+      >
     </div>
+
+    <Chart
+      :chart-data="datacollection"
+      :options="graphOption"
+      :styles="myStyles"
+    ></Chart>
+    <a
+      href="https://www3.nhk.or.jp/news/special/coronavirus/data-widget/"
+      target="_blank"
+      class="underline text-white hover:text-gray-100"
+    >
+      都道府県ごとの死者者数の推移情報提供:NHK
+    </a>
   </div>
 </template>
 
@@ -50,6 +63,7 @@ export default {
       dailyChartData: [],
       graphSwich: true,
       graphOption: Object,
+      myStyles: { height: '600px', posision: 'relative' },
     }
   },
 
@@ -82,10 +96,18 @@ export default {
         scales: {
           yAxes: [
             {
+              gridLines: {
+                color: 'white',
+              },
               scaleLabel: {
                 display: true,
                 labelString: '(人)',
                 fontSize: 15,
+                fontColor: 'white',
+              },
+              ticks: {
+                // 目盛り
+                fontColor: 'white', // 目盛りの色
               },
             },
           ],
@@ -98,13 +120,14 @@ export default {
                 display: true,
                 fontSize: 15,
               },
+              ticks: {
+                // 目盛り
+                fontColor: 'white', // 目盛りの色
+              },
             },
           ],
         },
-        brush: {
-          target: [1, 2, 3, 4, 5],
-          enabled: true,
-        },
+
         responsive: true,
         maintainAspectRatio: false,
         spanGaps: false,
@@ -167,10 +190,18 @@ export default {
         scales: {
           yAxes: [
             {
+              gridLines: {
+                color: 'white',
+              },
               scaleLabel: {
                 display: true,
                 labelString: '(人)',
                 fontSize: 15,
+                fontColor: 'white',
+              },
+              ticks: {
+                // 目盛り
+                fontColor: 'white', // 目盛りの色
               },
             },
           ],
@@ -182,6 +213,10 @@ export default {
               scaleLabel: {
                 display: true,
                 fontSize: 15,
+              },
+              ticks: {
+                // 目盛り
+                fontColor: 'white', // 目盛りの色
               },
             },
           ],
@@ -220,10 +255,3 @@ export default {
   },
 }
 </script>
-
-<style>
-/* .small { */
-/* max-width: 1000px; */
-/* margin: 100px auto; */
-/* } */
-</style>
