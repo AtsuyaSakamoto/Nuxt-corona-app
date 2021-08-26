@@ -1,33 +1,46 @@
 <template>
-  <div class="small">
-    <div class="text-center">
-      <h2 class="text-2xl mb-2">都道府県別感染者数</h2>
-      <div class="m-auto inline-block bg-teal-400">
-        <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
+  <div class="text-center">
+    <h2 class="text-2xl mb-2 text-white">都道府県別感染者数</h2>
+    <div class="m-auto inline-block bg-teal-400">
+      <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
 
-        <input
-          id="graphChoice1"
-          type="radio"
-          name="selectGraph"
-          value="1"
-          checked
-          class="form-radio"
-          @change="changeGraphTerm"
-        />
-        <label for="graphChoice1" class="inline-flex items-center">累計</label>
-        <input
-          id="graphChoice2"
-          type="radio"
-          name="selectGraph"
-          value="2"
-          class="form-radio"
-          @change="changeGraphTerm"
-        />
-        <label for="graphChoice2" class="inline-flex items-center">日別</label>
-      </div>
-
-      <Chart :chart-data="datacollection" :options="graphOption"></Chart>
+      <input
+        id="graphChoice1"
+        type="radio"
+        name="selectGraph"
+        value="1"
+        checked
+        class="form-radio"
+        @change="changeGraphTerm"
+      />
+      <label for="graphChoice1" class="inline-flex items-center text-white"
+        >累計</label
+      >
+      <input
+        id="graphChoice2"
+        type="radio"
+        name="selectGraph"
+        value="2"
+        class="form-radio"
+        @change="changeGraphTerm"
+      />
+      <label for="graphChoice2" class="inline-flex items-center text-white"
+        >日別</label
+      >
     </div>
+
+    <Chart
+      :chart-data="datacollection"
+      :options="graphOption"
+      :styles="myStyles"
+    ></Chart>
+    <a
+      href="https://www3.nhk.or.jp/news/special/coronavirus/data-widget/"
+      target="_blank"
+      class="underline text-white hover:text-gray-100"
+    >
+      都道府県ごとの感染者数の推移情報提供:NHK
+    </a>
   </div>
 </template>
 
@@ -50,12 +63,14 @@ export default {
       dailyChartData: [],
       graphSwich: true,
       graphOption: Object,
+      myStyles: { height: '600px', posision: 'relative' },
     }
   },
 
   created() {
     this.fillData()
   },
+
   methods: {
     fillData() {
       this.getLabels()
@@ -63,7 +78,7 @@ export default {
 
       this.datacollection = {
         labels: this.chartLabels,
-
+        scaleFontColor: 'white',
         datasets: [
           {
             label: '累計感染者数',
@@ -74,7 +89,6 @@ export default {
             data: this.chartData,
             lineTension: 0,
             fill: true,
-            boxWidth: 10,
           },
         ],
       }
@@ -82,10 +96,18 @@ export default {
         scales: {
           yAxes: [
             {
+              gridLines: {
+                color: 'white',
+              },
               scaleLabel: {
                 display: true,
                 labelString: '(人)',
                 fontSize: 15,
+                fontColor: 'white',
+              },
+              ticks: {
+                // 目盛り
+                fontColor: 'white', // 目盛りの色
               },
             },
           ],
@@ -97,6 +119,11 @@ export default {
               scaleLabel: {
                 display: true,
                 fontSize: 15,
+                fontColor: 'white',
+              },
+              ticks: {
+                // 目盛り
+                fontColor: 'white', // 目盛りの色
               },
             },
           ],
@@ -137,6 +164,7 @@ export default {
         this.dailyGraph()
       }
     },
+    // 日別グラフへの切り替え
     dailyGraph() {
       this.getTodayLabels()
       this.getTodayChartData()
@@ -164,10 +192,18 @@ export default {
         scales: {
           yAxes: [
             {
+              gridLines: {
+                color: 'white',
+              },
               scaleLabel: {
                 display: true,
                 labelString: '(人)',
                 fontSize: 15,
+                fontColor: 'white',
+              },
+              ticks: {
+                // 目盛り
+                fontColor: 'white', // 目盛りの色
               },
             },
           ],
@@ -180,8 +216,21 @@ export default {
                 display: true,
                 fontSize: 15,
               },
+              ticks: {
+                // 目盛り
+                fontColor: 'white', // 目盛りの色
+              },
             },
           ],
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        spanGaps: false,
+        elements: {
+          line: {
+            tension: 0,
+            fill: false,
+          },
         },
       }
     },
@@ -201,6 +250,7 @@ export default {
         }
       })
     },
+    // 累計グラフと日別グラフの処理を管理
     changeGraphTerm(e) {
       e.target.value === '2' ? this.dailyGraph() : this.fillData()
       this.graphSwich = !this.graphSwich
@@ -208,10 +258,3 @@ export default {
   },
 }
 </script>
-
-<style>
-/* .small { */
-/* max-width: 600px; */
-/* margin: 100px auto; */
-/* } */
-</style>

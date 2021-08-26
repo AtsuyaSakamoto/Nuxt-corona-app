@@ -1,5 +1,4 @@
 <template>
-  <body style="">
     <div id="root">
       <div>
         <div class="MuiContainer-root MuiContainer-maxWidthLg">
@@ -147,7 +146,6 @@
         </div>
       </footer>
     </div>
-  </body>
 </template>
 
 <script>
@@ -219,6 +217,7 @@ export default {
       corona: data.corona,
       pcr: data.pcr
     }
+
   },
 
   data() {
