@@ -1,5 +1,4 @@
 <template>
-  <body style="">
     <div id="root">
       <Dead />
       <div>
@@ -152,7 +151,6 @@
         </div>
       </footer>
     </div>
-  </body>
 </template>
 
 <script>
@@ -210,9 +208,9 @@ export default {
     }
     this.graphData = tranceData
     // eslint-disable-next-line no-console
-    console.log(this.graphData)
+    // console.log(this.graphData)
     // eslint-disable-next-line no-console
-    console.log(this.graphData2)
+    // console.log(this.graphData2)
   },
 }
 </script>
