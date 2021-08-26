@@ -1,5 +1,5 @@
 <template>
-  <div>{{ data }}</div>
+  <div>aaa</div>
 </template>
 
 <script>
