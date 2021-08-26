@@ -1,13 +1,13 @@
-
 export const state = () => ({
-  bedUsage : {}
+  bedUsageData : {}
 })
 
 export const mutations = {
   setData(state, payload){
-    state.bedUsage = payload
+    state.bedUsageData = payload
   }
 }
+
 export const actions = {
   fetchBedsUsageData({commit}, payload){
     const bedsData = []
