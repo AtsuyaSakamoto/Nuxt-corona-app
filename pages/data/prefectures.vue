@@ -1,6 +1,8 @@
 <template>
   <div class="pt-10 px-30 bg-gray-900">
-    <div class="grid grid-cols-1 gap-6 mr-5 sm:mx-20 md:mx-36 lg:grid-cols-2">
+    <div
+      class="grid grid-cols-1 gap-6 ml-3 mr-8 sm:mx-20 md:mx-36 lg:grid-cols-2"
+    >
       <div>
         <PrefecturesInfection />
       </div>
@@ -21,6 +23,11 @@ export default {
   components: {
     PrefecturesDead,
     PrefecturesInfection,
+  },
+  data() {
+    return {
+      title: 'コロナ感染状況 都道府県別グラフ',
+    }
   },
 
   async fetch(context) {
@@ -58,6 +65,45 @@ export default {
     })
 
     context.store.dispatch('prefectures/setPrefecturesData', parsedata.data)
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        // ページの説明
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'コロナウイルスの都道府県状況',
+        },
+        // ページのキーワード
+        {
+          hid: 'keyword',
+          name: 'keyword',
+          content: 'コロナ感染者,コロナ死亡者,コロナ都道府県',
+        },
+
+        // ページの種類 TOPページであれば「website」、TOP以外のページでは「article」
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        // ページ名
+        { hid: 'og:title', property: 'og:title', content: this.title },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'ページの説明',
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'http://localhost:3000/data/prefectures',
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: 'https://hogehoge.com/img/ogp/about.jpg',
+        },
+      ],
+    }
   },
 }
 </script>
