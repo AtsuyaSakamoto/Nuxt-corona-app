@@ -1,5 +1,7 @@
 <template>
+<<<<<<< HEAD
   <div> {{}} </div>
+
 </template>
 
 <script>

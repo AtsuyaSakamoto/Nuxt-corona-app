@@ -1,5 +1,9 @@
 <template>
+<<<<<<< HEAD
   <div> {{}} </div>
+=======
+  <div>aaa</div>
+>>>>>>> 470002a5dcaa6f0555e53f9c064adc9224c0a0d9
 </template>
 
 <script>

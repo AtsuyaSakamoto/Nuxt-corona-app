@@ -4,7 +4,10 @@
       v-model="selected_pref_code"
       name="pref_code"
       class="
-        block
+        w-1
+        px-auto
+        mx-auto
+        md:block
         appearance-none
         w-full
         bg-white

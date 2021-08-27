@@ -1,9 +1,13 @@
 <template>
-  <div class="flex flex-row pt-10 bg-gray-900">
-    <div class="shadow-lg p-5 mx-8 w-5">
-      <PrefecturesInfection />
+  <div class="pt-10 px-30 bg-gray-900">
+    <div class="grid grid-cols-1 gap-6 mr-5 sm:mx-20 md:mx-36 lg:grid-cols-2">
+      <div>
+        <PrefecturesInfection />
+      </div>
+      <div>
+        <PrefecturesDead />
+      </div>
     </div>
-    <div class="shadow-lg p-5 mx-8 w-10"><PrefecturesDead /></div>
   </div>
 </template>
 
@@ -24,7 +28,8 @@ export default {
       'https://www3.nhk.or.jp/n-data/opendata/coronavirus/nhk_news_covid19_prefectures_daily_data.csv'
     )
     const parsedata = Papa.parse(result.data, {
-
+      // csvヘッダーをプロパティに変更
+      header: true,
       // 文字列を数値に変換
       dynamicTyping: true,
       // 文字化け防止
