@@ -74,7 +74,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: 'コロナウイルスの都道府県状況',
+          content: 'コロナウイルスの都道府県別感染状況を掲載しています。',
         },
         // ページのキーワード
         {
@@ -90,7 +90,7 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content: 'ページの説明',
+          content: 'コロナウイルスの都道府県別感染状況を掲載しています。',
         },
         {
           hid: 'og:url',

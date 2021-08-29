@@ -98,6 +98,7 @@ export default {
             {
               gridLines: {
                 color: 'white',
+                zeroLineColor: 'white',
               },
               scaleLabel: {
                 display: true,
@@ -115,6 +116,7 @@ export default {
             {
               gridLines: {
                 display: false,
+                zeroLineColor: 'white',
               },
               scaleLabel: {
                 display: true,

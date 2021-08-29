@@ -22,8 +22,8 @@ export default {
       return this.$store.state.pcr.pcrData
     },
   },
-      mounted(){
-       console.log(this.$route.name)
-      },
+  mounted() {
+    //  console.log(this.$route.name)
+  },
 }
 </script>

@@ -98,6 +98,7 @@ export default {
             {
               gridLines: {
                 color: 'white',
+                zeroLineColor: 'white',
               },
               scaleLabel: {
                 display: true,
@@ -142,7 +143,8 @@ export default {
 
     getLabels() {
       this.chartLabels = []
-      this.$store.state.prefectures.prefecturesData.forEach((data) => {
+      const fetchPrefecturesData = this.$store.state.prefectures.prefecturesData
+      fetchPrefecturesData().forEach((data) => {
         if (data.pref_code === Number(this.selected_pref_code)) {
           this.chartLabels.push(data.date)
         }
@@ -150,7 +152,8 @@ export default {
     },
     getChartData() {
       this.chartData = []
-      this.$store.state.prefectures.prefecturesData.forEach((data) => {
+      const fetchPrefecturesData = this.$store.state.prefectures.prefecturesData
+      fetchPrefecturesData.forEach((data) => {
         if (data.pref_code === Number(this.selected_pref_code)) {
           this.chartData.push(data.total_infection)
         }
@@ -194,6 +197,7 @@ export default {
             {
               gridLines: {
                 color: 'white',
+                zeroLineColor: 'white',
               },
               scaleLabel: {
                 display: true,
