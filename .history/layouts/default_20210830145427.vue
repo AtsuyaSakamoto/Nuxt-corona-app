@@ -1,0 +1,44 @@
+<template>
+  <div>
+    <Header />
+    <Nuxt />
+    <Footer />
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+export default{
+
+  async fetch({store}){
+    
+    await axios
+      .get(
+        'https://www.stopcovid19.jp/data/mhlw_go_jp/opendata/covid19.csv'
+      )
+      .then((res) => {
+        // store.dispatch('pcr/fetchPcrData', res.data)
+      const parseData = Papa.parse(res.data,{
+        // csvヘッダーをプロパティに変更
+      header: true,
+      // 文字列を数値に変換
+      dynamicTyping: true,
+      // 文字化け防止
+      encoding: 'Shift-JIS',
+      // エラーを取り除く
+      skipEmptyLines: true,
+      TransformHeader(header){
+        if(header === "PCR 検査陽性者数"){
+          return "pcr_positive_num"
+        }else if(header === "PCR 検査実施件数"){
+          return "pcr_test_num"
+        }else if(header === "日付"){
+          return "date"
+        }
+      }
+      })
+      store.dispatch("pcr/setParseData", parseData.data)
+      })
+  },
+</script>
+          }

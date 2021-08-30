@@ -1,0 +1,52 @@
+<template>
+  <div>
+    <Header />
+    <Nuxt />
+    <Footer />
+  </div>
+</template>
+
+<script>
+import axios from "axios"
+
+export default{
+  async fetch({ store }) {
+    console.log("default")
+      await axios
+      .get(
+        'https://data.corona.go.jp/converted-json/covid19japan-npatients.json'
+        // 累積感染者数
+      )
+      .then((res) => {
+        const necessaryData = res.data.slice(-7)
+        const payload = {
+          totalInfection: necessaryData[6].npatients,
+          comparison_yesterday: (necessaryData[6].npatients) - (necessaryData[5].npatients),
+          comparison_oneWeek: (necessaryData[6].npatients) - (necessaryData[0].npatients)
+        }
+        store.dispatch("fetchTotalData", payload)
+      })
+      
+      await axios
+      .get("https://data.corona.go.jp/converted-json/covid19japan-ndeaths.json")
+        // 累積死亡者
+      .then(res => {
+        const necessaryData = res.data.slice(-7)
+        const payload = {
+          totalDeath: necessaryData[6].ndeaths,
+          comparison_yesterday: (necessaryData[6].ndeaths) - (necessaryData[5].ndeaths),
+          comparison_oneWeek: (necessaryData[6].ndeaths) - (necessaryData[0].ndeaths)
+        }
+        store.dispatch("fetchTotalDeath",payload)
+      })
+
+      await axios
+      .get(
+        'https://data.corona.go.jp/converted-json/covid19japan-npatients.json'
+      )
+      .then((res) => {
+        store.dispatch('pcr/fetchPcrData', res.data)
+      })
+  },
+}
+</script>
