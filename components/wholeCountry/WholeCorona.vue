@@ -2,7 +2,6 @@
   <div class="text-center">
     <h2 class="sm:text-2xl mb-2 text-white">感染者数推移</h2>
     <div class="inline-block bg-teal-400">
-
       <input
         id="graphChoice1"
         type="radio"
@@ -53,13 +52,13 @@ export default {
   data() {
     return {
       selected_pref_code: 1,
-      datacollection: Object,
+      datacollection: {},
       chartLabels: [],
       chartData: [],
       dailyChartLabels: [],
       dailyChartData: [],
       graphSwich: true,
-      graphOption: Object,
+      graphOption: {},
       myStyles: { posision: 'relative' },
     }
   },
@@ -223,15 +222,16 @@ export default {
     },
     getTodayLabels() {
       this.dailyChartLabels = []
-      this.$store.state.wholeCountry.TotalData.data.forEach((data)=> {
+      this.$store.state.wholeCountry.TotalData.forEach((data)=> {
         this.dailyChartLabels.push(data.date)
       })
     },
     getTodayChartData() {
       this.dailyChartData = []
-      this.$store.state.wholeCountry.TotalData.data.forEach((data)=> {
+      this.$store.state.wholeCountry.TotalData.forEach((data)=> {
         this.dailyChartData.push(data.adpatients)
-      })       },
+      })
+    },
     // 累計グラフと日別グラフの処理を管理
     changeGraphTerm(e) {
       e.target.value === '2' ? this.dailyGraph() : this.fillData()

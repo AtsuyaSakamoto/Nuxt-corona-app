@@ -1,6 +1,5 @@
 export const state = () => ({
   TotalDead: [],
-  DailyDead: [],
   TotalData: [],
 })
 
@@ -8,35 +7,41 @@ export const mutations = {
   setFetchTotalDead(state, fetchTotalDead) {
     state.TotalDead = fetchTotalDead
   },
-  setFetchDailyDead(state, fetchDailyDead) {
-    state.DailyDead = fetchDailyDead
-  },
   setFetchTotalData(state, fetchTotalData) {
     state.TotalData = fetchTotalData
   },
 }
 
 export const actions = {
+
   setFetchTotalDead({ commit }, fetchTotalDead) {
     commit('setFetchTotalDead', fetchTotalDead)
-  },
-  setFetchDailyDead({ commit }, fetchDailyDead) {
-    commit('setFetchDailyDead', fetchDailyDead)
   },
   setFetchTotalData({ commit }, fetchTotalData) {
     commit('setFetchTotalData', fetchTotalData)
   },
-  
 }
 
 export const getters = {
   fetchTotalDead: (state) => {
     return state.TotalDead
   },
-  fetchDailyDead: (state) => {
-    return state.DailyDead
-  },
   fetchTotalData: (state) => {
     return state.TotalData
   },
+  fetchDailyDead:(state) => {
+    const dead = []
+    const array = []
+    for(let i = 0 ; i < state.TotalDead.length ; i++){
+      dead.push(state.TotalDead[i].ndeaths)
+    }
+    for(let i = 0 ; i < dead.length ; i++){
+      if(i !== 0){
+        array.push(dead[i] - dead[i - 1])
+      }
+    }
+    return array
+  },
 }
+
+

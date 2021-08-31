@@ -27,8 +27,6 @@ export default {
     const result = await axios.get(
       'https://www3.nhk.or.jp/n-data/opendata/coronavirus/nhk_news_covid19_prefectures_daily_data.csv'
     )
-    // eslint-disable-next-line no-console
-    console.log(result.data)
     const parsedata = Papa.parse(result.data, {
       // csvヘッダーをプロパティに変更
       header: true,
