@@ -13,9 +13,3 @@ export const actions = {
     commit('setFetchTotalDead', fetchTotalDead)
   },
 }
-
-export const getters = {
-  fetchTotalDead: (state) => {
-    return state.fetchTotalDead
-  },
-}

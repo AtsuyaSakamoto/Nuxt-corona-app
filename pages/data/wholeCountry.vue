@@ -13,12 +13,9 @@
 
 <script>
 import axios from 'axios'
-import { mapGetters } from 'vuex'
 import Papa from 'papaparse'
 import WholeDead from '../../components/wholeCountry/WholeDead.vue'
 import WholeCorona from '../../components/wholeCountry/WholeCorona.vue'
-
-
 
 export default {
   components: {
@@ -40,7 +37,6 @@ async fetch( {store} ) {
       .get("https://data.corona.go.jp/converted-json/covid19japan-ndeaths.json")
         // 累積死亡者
       .then(res => {
-      
         store.dispatch("fetchTotalDead/setFetchTotalDead",res.data)
       })
 
@@ -63,12 +59,11 @@ async fetch( {store} ) {
               } else if(header === 'PCR 検査陽性者数(単日)') {
                 return 'dailycorona'
               } else {
-          return 'default'
+                return 'default'
               }
             }
           })
         store.dispatch("fetchDailyData/setFetchDailyData",ppdata)
-
       })
 
       await axios
@@ -90,20 +85,13 @@ async fetch( {store} ) {
               } else if(header === '死亡者数') {
                 return 'dailydead'
               } else {
-          return 'default'
+                return 'default'
               }
             }
           })
         store.dispatch("fetchDailyDead/setFetchDailyDead",ppdead)
-
       })
-
-  },
-  computed: {
-    ...mapGetters(["fetchTotalData","fetchTotalDead","fetchDailyData","fetchDailyDead"]),
   },
 
 }
 </script>
-=======
->>>>>>> develop

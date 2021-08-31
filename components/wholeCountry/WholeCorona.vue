@@ -2,7 +2,6 @@
   <div class="text-center">
     <h2 class="sm:text-2xl mb-2 text-white">感染者数推移</h2>
     <div class="inline-block bg-teal-400">
-
       <input
         id="graphChoice1"
         type="radio"
@@ -53,13 +52,13 @@ export default {
   data() {
     return {
       selected_pref_code: 1,
-      datacollection: Object,
+      datacollection: {},
       chartLabels: [],
       chartData: [],
       dailyChartLabels: [],
       dailyChartData: [],
       graphSwich: true,
-      graphOption: Object,
+      graphOption: {},
       myStyles: { posision: 'relative' },
     }
   },

@@ -16,6 +16,6 @@ export const actions = {
 
 export const getters = {
   fetchTotalData: (state) => {
-    return state.fetchTotalData
+    return state.TotalData
   },
 }

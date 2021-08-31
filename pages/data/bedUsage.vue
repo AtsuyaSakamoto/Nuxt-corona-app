@@ -13,10 +13,13 @@ export default{
     Content
   },
   async fetch({store}){
-    await axios.get('https://www.stopcovid19.jp/data/covid19japan_beds/latest.json')
-    .then(res => {
-    store.dispatch("bedusage/fetchBedsUsageData", res.data)
-    })
+    try{
+      await axios.get('https://www.stopcovid19.jp/data/covid19japan_beds/latest.json').then(res => {
+        store.dispatch("bedusage/fetchBedsUsageData", res.data)
+      })
+    } catch(error){
+      console.log(error)
+    }
   },
   computed:{
     bedUsage(){

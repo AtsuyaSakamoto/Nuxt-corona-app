@@ -13,9 +13,3 @@ export const actions = {
     commit('setFetchDailyData', fetchDailyData)
   },
 }
-
-export const getters = {
-  fetchDailyData: (state) => {
-    return state.fetchDailyData
-  },
-}

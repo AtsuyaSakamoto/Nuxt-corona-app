@@ -9,8 +9,4 @@ describe('Aboutのテスト', () => {
   test('Aboutページのタイトルのタグ確認', () => {
     expect(wrapper.text()).toContain("当サイトに関して")
   })
-  test('Aboutページのスタイル確認', () => {
-    const tagA = wrapper.find('#admin')
-    expect(wrapper.contains("a")).toBe(true)
-  })
 })

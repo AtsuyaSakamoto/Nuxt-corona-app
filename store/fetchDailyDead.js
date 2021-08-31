@@ -16,6 +16,6 @@ export const actions = {
 
 export const getters = {
   fetchDailyDead: (state) => {
-    return state.fetchDailyDead
+    return state.DailyDead
   },
 }
