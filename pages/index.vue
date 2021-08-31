@@ -41,7 +41,8 @@ export default{
         }
         store.dispatch("fetchTotalDeath",payload)
       })
-            await axios
+
+      await axios
       .get(
         'https://www.stopcovid19.jp/data/mhlw_go_jp/opendata/covid19.csv'
       )
