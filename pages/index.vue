@@ -47,7 +47,7 @@ export default{
         store.dispatch('pcr/fetchPcrData', res.data)
       })
 
-            await axios
+      await axios
       .get(
         'https://www.stopcovid19.jp/data/mhlw_go_jp/opendata/covid19.csv'
       )
