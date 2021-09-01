@@ -2,7 +2,7 @@
   <div class="text-center">
     <h2 class="sm:text-2xl mb-2 text-white">都道府県別感染者数</h2>
     <div class="inline-block bg-teal-400">
-      <PrefecturesSelect class="mb-2" @my-click="changeGraph" />
+      <PrefecturesSelect class="mb-2" @select-prefecture="changeGraph" />
 
       <input
         id="graphChoice1"
@@ -144,7 +144,7 @@ export default {
     getLabels() {
       this.chartLabels = []
       const fetchPrefecturesData = this.$store.state.prefectures.prefecturesData
-      fetchPrefecturesData().forEach((data) => {
+      fetchPrefecturesData.forEach((data) => {
         if (data.pref_code === Number(this.selected_pref_code)) {
           this.chartLabels.push(data.date)
         }

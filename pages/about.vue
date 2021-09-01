@@ -15,7 +15,7 @@
         text-white
       "
     >
-      <h2 class="text-base mb-1 font-bold">当サイトに関して</h2>
+      <h1 class="text-base mb-1 font-bold">当サイトに関して</h1>
       <p class="mb-3 text-sm">
         当サイトは日本国内における新型コロナウイルス感染症(COVID-19)に関する情報サイトです。
       </p>
@@ -38,6 +38,7 @@
       <ul class="underline text-blue-500 text-sm">
         <li class="hover:text-blue-400 mb-1">
           <a
+            id="link"
             href="https://www3.nhk.or.jp/news/special/coronavirus/data-widget/"
             target="_blank"
           >
@@ -100,22 +101,6 @@
         ただし当サイトでは、データの完全性についての保証及びデータの誤りにより生じた損害等に対して、一切の責任を負いません。<br />
         また当サイト及び掲載している情報については、当サイトの一存により公開を停止する場合がございますがご了承ください。<br />
       </div>
-      <br />
-      <a
-        href="https://creativecommons.org/licenses/by/4.0/deed.ja"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="underline text-blue-500 hover:text-blue-400 text-sm"
-      >
-        ※クリエイティブ・コモンズ
-      </a>
-      <br />
-      <h2 class="text-base mt-3 font-bold">更新情報</h2>
-      <h3 class="mt-1 text-sm">
-        <!-- datepublishedでWebサイトに公開日を認識させる -->
-        <time datetime="2021-09-01" itemprop="datepublished">2021-09-01</time>
-      </h3>
-      <h3 class="mt-1 text-sm">サイトを開設しました</h3>
     </div>
   </div>
 </template>

@@ -48,7 +48,7 @@ export default {
     return {
       chartData: {},
       showModal: false,
-       styles: { width: '300px',margin:'auto'}
+      styles: { width: '300px',margin:'auto'}
     }
   },
   beforeUpdate() {

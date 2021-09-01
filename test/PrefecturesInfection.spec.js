@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils'
-import PrefecturesDead from '@/components/prefectures/PrefecturesDead.vue'
+import PrefecturesInfection from '@/components/prefectures/PrefecturesInfection.vue'
 
-describe('PrefecturesDead', () => {
+describe('PrefecturesInfection', () => {
   test('コンポーネントが存在する', () => {
     // PrefecturesDeadコンポーネントをマウントする
-    const wrapper = mount(PrefecturesDead)
+    const wrapper = mount(PrefecturesInfection)
     // expect()の中身がtrueだったらテスト合格
     // expect(wrapper.exists()).toBeTruthy()
     console.log(wrapper.text())

@@ -45,9 +45,9 @@
       </div>
     </div>
     <div class="text-white py-9 underline text-xs text-center md:text-base">
-    <a class="hover:text-red-500" href="https://www.stopcovid19.jp/">療養状況等及び入院患者受入病床数等に関するデータ情報提供:新型コロナウイルス対策ダッシュボード</a>
-    <br>
-    <a class="hover:text-red-300 mt-1" href="https://www.mhlw.go.jp/stf/seisakunitsuite/newpage_00023.html">療養状況等及び入院患者受入病床数等に関する調査についての元データ情報提供:厚生労働省</a>
+      <a class="hover:text-red-500" href="https://www.stopcovid19.jp/">療養状況等及び入院患者受入病床数等に関するデータ情報提供:新型コロナウイルス対策ダッシュボード</a>
+      <br>
+      <a class="hover:text-red-300 mt-1" href="https://www.mhlw.go.jp/stf/seisakunitsuite/newpage_00023.html">療養状況等及び入院患者受入病床数等に関する調査についての元データ情報提供:厚生労働省</a>
     </div>
   </div>
 </template>

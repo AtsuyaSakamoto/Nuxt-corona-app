@@ -4,8 +4,6 @@
   </div>
 </template>
 
-//子要素（src/components/bedUsage/content.vueに取得した情報を渡す）
-
 <script>
 import axios from "axios"
 import Content from '../../components/bedUsage/content.vue'
@@ -15,10 +13,14 @@ export default{
     Content
   },
   async fetch({store}){
-    await axios.get('https://www.stopcovid19.jp/data/covid19japan_beds/latest.json')
-    .then(res => {
-    store.dispatch("bedusage/fetchBedsUsageData", res.data)
-    })
+    try{
+      await axios.get('https://www.stopcovid19.jp/data/covid19japan_beds/latest.json').then(res => {
+        store.dispatch("bedusage/fetchBedsUsageData", res.data)
+      })
+    } catch(error){
+      // eslint-disable-next-line no-console
+      console.log(error)
+    }
   },
   computed:{
     bedUsage(){
