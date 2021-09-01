@@ -10,31 +10,6 @@ export default {
   components: {
     Content,
   },
-<<<<<<< HEAD
-  async fetch({store, error}){
-    try{
-    await axios
-    .get('https://www.stopcovid19.jp/data/mhlw_go_jp/opendata/covid19.csv')
-    .then(res => {
-      const parseData = Papa.parse(res.data,{
-        header: true,
-      TransformHeader(header){
-        if(header === "PCR 検査陽性者数"){
-          return "pcr_positive_num"
-        }else if(header === "PCR 検査実施件数"){
-          return "pcr_test_num"
-        }else if(header === "日付"){
-          return "date"
-        }
-      }
-    })
-      store.dispatch("pcr/setParseData", parseData.data)
-    })
-    } catch(err){
-      error({
-      statusCode: err.response.status,
-    });
-=======
   async fetch({ store, error }) {
     try {
       await axios
@@ -58,7 +33,6 @@ export default {
       error({
         statusCode: err.response.status,
       })
->>>>>>> develop
     }
   },
   computed: {
