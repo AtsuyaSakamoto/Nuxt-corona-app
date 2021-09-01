@@ -11,7 +11,6 @@ export const mutations = {
 export const getters = {
   indexPcrData:(state) => {
     const necessaryData = state.parseData.slice(-7)
-    console.log(necessaryData)
     const payload = {
       positive_rate: Math.floor(((necessaryData[6].pcr_positive_num / necessaryData[6].pcr_test_num) * 100)  * 100) / 100 ,
       positive_rate_yesterday: Math.floor(((necessaryData[5].pcr_positive_num / necessaryData[5].pcr_test_num) * 100)  * 100) / 100 ,
