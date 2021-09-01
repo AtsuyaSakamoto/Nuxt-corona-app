@@ -36,7 +36,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/google-gtag'
+    '@nuxtjs/google-gtag',
   ],
   'google-gtag': {
     id: 'G-LBBVZG2X9B',
@@ -49,5 +49,6 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['vue-final-modal'],
+    // analyze: true
   },
 }

@@ -38,7 +38,7 @@
       <ul class="underline text-blue-500 text-sm">
         <li class="hover:text-blue-400 mb-1">
           <a
-            id="link"
+            id="source"
             href="https://www3.nhk.or.jp/news/special/coronavirus/data-widget/"
             target="_blank"
           >

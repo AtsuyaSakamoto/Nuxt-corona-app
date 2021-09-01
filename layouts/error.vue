@@ -51,7 +51,12 @@
 //
 <script>
 export default {
-  props: ['error'],
+  props: {
+    error: {
+      type: Object,
+      default: null,
+    },
+  },
   mounted() {
     const redirect = () => {
       this.$router.push('/')

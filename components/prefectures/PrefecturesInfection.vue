@@ -1,6 +1,8 @@
 <template>
   <div class="text-center">
-    <h2 class="sm:text-2xl mb-2 text-white">都道府県別感染者数</h2>
+    <h2 class="sm:text-2xl my-5 text-white lg:mt-8 lg:text-3xl">
+      都道府県別感染者数
+    </h2>
     <div class="inline-block bg-teal-400">
       <PrefecturesSelect class="mb-2" @select-prefecture="changeGraph" />
 
@@ -24,7 +26,9 @@
         class="form-radio"
         @change="changeGraphTerm"
       />
-      <label for="graphChoice2" class="inline-flex items-center text-white"
+      <label
+        for="graphChoice2"
+        class="inline-flex items-center text-white my-2 lg:my-5"
         >日別</label
       >
     </div>
@@ -34,13 +38,16 @@
       :options="graphOption"
       :styles="myStyles"
     ></Chart>
-    <a
-      href="https://www3.nhk.or.jp/news/special/coronavirus/data-widget/"
-      target="_blank"
-      class="underline text-white hover:text-gray-100"
-    >
-      都道府県ごとの感染者数の推移情報提供:NHK
-    </a>
+
+    <div class="sm:mt-20 mb-10">
+      <a
+        href="https://www3.nhk.or.jp/news/special/coronavirus/data-widget/"
+        target="_blank"
+        class="text-sm sm:text-lg underline text-white hover:text-gray-100"
+      >
+        都道府県ごとの感染者数の推移情報提供:NHK
+      </a>
+    </div>
   </div>
 </template>
 
