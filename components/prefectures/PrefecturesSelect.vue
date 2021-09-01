@@ -22,7 +22,7 @@
         focus:outline-none focus:shadow-outline
         pl-24
       "
-      @change="send"
+      @change="changePrefecture"
     >
       <option value="1">北海道</option>
       <option value="2">青森県</option>
@@ -105,8 +105,8 @@ export default {
     }
   },
   methods: {
-    send() {
-      this.$emit('my-click', this.selected_pref_code)
+    changePrefecture() {
+      this.$emit('select-prefecture', this.selected_pref_code)
     },
   },
 }
