@@ -22,21 +22,24 @@ export default {
     WholeCorona,
   },
 
-async fetch( {store} ) {
-      await axios
-      .get(
-        'https://data.corona.go.jp/converted-json/covid19japan-npatients.json'
-        // 累積感染者数 + 日別感染者数
-      )
-      .then((res) => {
-        store.dispatch("wholeCountry/setFetchTotalData", res.data)
-      })
-      await axios
-      .get("https://data.corona.go.jp/converted-json/covid19japan-ndeaths.json")
-        // 累積死亡者 + 日別感染者数
-      .then((res) => {
-        store.dispatch("wholeCountry/setFetchTotalDead",res.data)
-      })
-    }
+async fetch( {store,error} ) {
+  try{
+    await axios.get('https://data.corona.go.jp/converted-json/covid19japan-npatients.json').then((res) => {
+      store.dispatch("wholeCountry/setFetchTotalData", res.data)
+    })
+    await axios
+    .get("https://data.corona.go.jp/converted-json/covid19japan-ndeaths.json")
+      // 累積死亡者 + 日別感染者数
+    .then((res) => {
+      store.dispatch("wholeCountry/setFetchTotalDead",res.data)
+    })
+  }catch(err){
+      // eslint-disable-next-line no-console
+      console.log(err.response)
+      error({
+      statusCode: err.response.status,
+    });
+  }
+  }
 }
 </script>

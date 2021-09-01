@@ -6,7 +6,7 @@
 
 <script>
 import axios from "axios"
-import Content from '../../components/bedUsage/Content.vue'
+import Content from '../../components/bedUsage/Content'
 
 export default{
   components:{

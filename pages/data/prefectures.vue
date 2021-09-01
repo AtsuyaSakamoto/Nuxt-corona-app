@@ -56,7 +56,6 @@ export default {
         }
       },
     })
-
     context.store.dispatch('prefectures/setPrefecturesData', parsedata.data)
   },
 }
