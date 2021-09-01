@@ -1,9 +1,9 @@
 <template>
-  <Content 
-  :infection-data="infectionData"
-  :death-data="deathData"
-  :pcr-data="pcrData"
-  />
+ <Content 
+ :infection-data="infectionData"
+ :death-data="deathData"
+ :pcr-data="pcrData"
+ />
 </template>
 
 <script>
