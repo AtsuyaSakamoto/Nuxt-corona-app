@@ -8,6 +8,22 @@ export const mutations = {
   }
 }
 
+export const getters = {
+  wholeCountryBedUsage:(state) => {
+    let  totalBed = 0
+    for(let i = 0; i < state.bedUsageData.length; i++){
+      totalBed += state.bedUsageData[i].beds_num_hospitalization
+    }
+    let totalHospitalization = 0
+    for(let i = 0; i < state.bedUsageData.length; i++){
+      totalHospitalization += state.bedUsageData[i].num_hospitalization
+    }
+    const data  = Math.floor(((totalHospitalization / totalBed) * 100)  * 100) / 100
+    return data
+  }
+}
+
+
 export const actions = {
   fetchBedsUsageData({commit}, payload){
     const bedsData = []

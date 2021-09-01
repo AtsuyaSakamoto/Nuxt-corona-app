@@ -5,7 +5,7 @@
 <script>
 import axios from 'axios'
 import Papa from 'papaparse'
-import Content from '../../components/pcrCorona/content.vue'
+import Content from '../../components/pcrCorona/Content.vue'
 export default {
   components: {
     Content,
