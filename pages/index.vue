@@ -1,14 +1,16 @@
 <template>
- <Content 
- :infection-data="infectionData"
- :death-data="deathData"
- :pcr-data="pcrData"
- />
+  <Content 
+  :infection-data="infectionData"
+  :death-data="deathData"
+  :pcr-data="pcrData"
+  :whole-country-bed-usage = " wholeCountryBedUsage"
+  />
 </template>
 
 <script>
 import axios from 'axios'
 import Papa from 'papaparse'
+
 import Content from "../components/topPage/Content.vue"
 export default{
   components:{
@@ -61,23 +63,42 @@ export default{
       })
       store.dispatch("pcr/setParseData", parseData.data)
       })
+
+      try{
+      await axios.get('https://www.stopcovid19.jp/data/covid19japan_beds/latest.json').then(res => {
+        store.dispatch("bedusage/fetchBedsUsageData", res.data)
+      })
+    } catch(error){
+      // eslint-disable-next-line no-console
+      console.log(error)
+    }
+  },
+  head: {
+    title: 'コロナ情報サイト',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'my website description'
+      }
+    ],
   },
   computed:{
     infectionData(){
-      return this.$store.state.total
+      return this.$store.state.totalInfection
     },
     deathData(){
       return this.$store.state.totalDeath
     },
     pcrData(){
-      const necessaryData = this.$store.state.pcr.parseData.slice(-7)
-      const payload = {
-        positive_rate: Math.floor((necessaryData[6].pcr_positive_num / necessaryData[6].pcr_test_num) * 100),
-        positive_rate_yesterday: Math.floor((necessaryData[5].pcr_positive_num / necessaryData[5].pcr_test_num) * 100),
-        positive_rate_oneWeekAgo: Math.floor((necessaryData[0].pcr_positive_num / necessaryData[0].pcr_test_num) * 100),
-      }
-    return payload
-    }
+      return this.$store.getters["pcr/indexPcrData"]
+    },
+    wholeCountryBedUsage(){
+      return this.$store.getters["bedusage/wholeCountryBedUsage"]
+    },
   }
 }
 </script>
+
