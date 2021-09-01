@@ -20,8 +20,7 @@ describe('トップページのテスト', () => {
   let store
   beforeEach(() => {
     store = new Vuex.Store({
-      state: {
-      },
+      state: {},
     })
   })
 
