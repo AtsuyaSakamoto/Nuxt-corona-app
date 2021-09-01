@@ -10,12 +10,13 @@ export default {
   components: {
     Content,
   },
-  async fetch({store}){
+  async fetch({store, error}){
+    try{
     await axios
     .get('https://www.stopcovid19.jp/data/mhlw_go_jp/opendata/covid19.csv')
-    .then((res) => {
+    .then(res => {
       const parseData = Papa.parse(res.data,{
-      header: true,
+        header: true,
       TransformHeader(header){
         if(header === "PCR 検査陽性者数"){
           return "pcr_positive_num"
@@ -28,6 +29,11 @@ export default {
     })
       store.dispatch("pcr/setParseData", parseData.data)
     })
+    } catch(err){
+      error({
+      statusCode: err.response.status,
+    });
+    }
   },
   computed: {
     pcrParseData(){

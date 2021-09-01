@@ -20,9 +20,14 @@
 
 <script>
   export default {
-    // eslint-disable-next-line vue/require-prop-types
-    props: ['error'],
-    mounted(){
+
+    props:{
+      error: {
+        type: Object,
+        default: () => {}
+      }
+    },
+    created(){
       const redirect = () => {
         this.$router.push("/")
       }

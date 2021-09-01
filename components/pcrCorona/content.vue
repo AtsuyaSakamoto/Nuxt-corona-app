@@ -1,13 +1,12 @@
 <template>
   <div class="bg-gray-900 bg-opacity-95 text-white">
-    <h1 class="text-center text-xl sm:2xl  py-11">PCR検査数と陽性者数の推移</h1>
+    <h1 class="text-center text-xl sm:2xl lg:text-3xl  py-11 lg:pt-20">PCR検査数と陽性者数の推移</h1>
     <div class="mr-9 sm:mx-12 md:mx-32 lg:mx-52 xl:mx-72">
       <LineChart :chart-data="chartDataArry" :options="options"/>
     </div>
-    <h2 class="mt-5 pb-10 text-center underline text-xs sm:text-base"><a href="https://www.mhlw.go.jp/stf/covid-19/open-data.html" class="whitespace-no-wrap">PCR検査数と陽性者数の情報提供：厚生労働省オープンデータ</a></h2>
+    <h2 class="mt-5 pb-10 text-center underline text-xs sm:text-base lg:text-xl lg:pb-20"><a href="https://www.mhlw.go.jp/stf/covid-19/open-data.html" class="whitespace-no-wrap">PCR検査数と陽性者数の情報提供：厚生労働省オープンデータ</a></h2>
   </div>
 </template>
-
 
 <script>
 import LineChart from "./LineChart"

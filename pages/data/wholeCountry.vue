@@ -34,8 +34,6 @@ async fetch( {store,error} ) {
       store.dispatch("wholeCountry/setFetchTotalDead",res.data)
     })
   }catch(err){
-      // eslint-disable-next-line no-console
-      console.log(err.response)
       error({
       statusCode: err.response.status,
     });
