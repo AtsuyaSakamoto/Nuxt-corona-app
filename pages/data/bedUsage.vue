@@ -6,7 +6,7 @@
 
 <script>
 import axios from "axios"
-import Content from '../../components/bedUsage/content.vue'
+import Content from '../../components/bedUsage/Content.vue'
 
 export default{
   components:{
@@ -18,6 +18,7 @@ export default{
         store.dispatch("bedusage/fetchBedsUsageData", res.data)
       })
     } catch(error){
+      // eslint-disable-next-line no-console
       console.log(error)
     }
   },

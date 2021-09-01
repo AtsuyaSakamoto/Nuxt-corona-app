@@ -36,8 +36,6 @@ export default {
     }
     this.deadData = tranceData
 
-    // eslint-disable-next-line no-console
-    console.log(this.deadData)
   },
 }
 </script>

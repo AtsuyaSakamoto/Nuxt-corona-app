@@ -7,8 +7,21 @@
     <div class=" bg-white border-2 border-gray-200 rounded-lg dark:bg-gray-800 lg:mx-12">
          <div class="text-center my-5">
             <h1 id="name" class="text-xl md:text-2xl font-semibold mb-2">対策病床使用率(参考)※</h1>
-            <p class="text-gray-800 mt-2 text-xl md:text-xl">61.63%</p>
-            <p class="text-gray-800 mt-5 bg-red-600 mx-2 md:mx-10 md:text-xl">ステージ４</p>
+            <p class="text-gray-800 mt-2 text-xl md:text-xl">{{wholeCountryBedUsage}}%</p>
+            <p 
+            class="text-gray-800 mt-5 mx-2 md:mx-10 md:text-xl"
+            :class="
+                wholeCountryBedUsage > 50
+                ? 'bg-red-600'
+                : wholeCountryBedUsage > 20
+                ? 'bg-red-400'
+                : wholeCountryBedUsage > 10
+                ? 'bg-red-100'
+                : 'bg-gray-300'
+            "
+            >
+              {{stage}}
+            </p>
             <nuxt-link to="/data/bedusage">
             <p class="mt-5 underline text-blue-600 md:text-xl">都道府県ごとの病床使用率</p>
             </nuxt-link>
@@ -66,6 +79,23 @@ export default{
     pcrData:{
       type:Object,
       default:() => {}
+    },
+     wholeCountryBedUsage:{
+       type: Number,
+       default:() => {}
+     }
+  },
+  computed:{
+    stage(){
+      if(this.wholeCountryBedUsage > 50){
+        return "ステージ４"
+      }else if(this.wholeCountryBedUsage > 20){
+        return "ステージ３"
+      }else if(this.wholeCountryBedUsage > 10){
+        return "ステージ２"
+      }else{
+        return "ステージ１"
+      }
     }
   }
 }

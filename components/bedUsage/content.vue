@@ -52,7 +52,7 @@
   </div>
 </template>
 <script>
-import Modal from './modal.vue'
+import Modal from './bedUsageModal.vue'
 export default {
   components: {
     Modal,

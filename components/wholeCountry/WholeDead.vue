@@ -66,8 +66,6 @@ export default {
 
   created() {
     this.fillData()
-    // eslint-disable-next-line no-console
-    console.log(this.$store.state.fetchTotalDead.TotalDead)
 
   },
 
@@ -142,7 +140,7 @@ export default {
 
     getLabels() {
       this.chartLabels = []
-      this.$store.state.fetchTotalDead.TotalDead.forEach((data)=> {
+      this.$store.state.wholeCountry.TotalDead.forEach((data)=> {
         this.chartLabels.push(data.date)
       })
 
@@ -150,7 +148,7 @@ export default {
     },
     getChartData() {
       this.chartData = []
-      this.$store.state.fetchTotalDead.TotalDead.forEach((data)=> {
+      this.$store.state.wholeCountry.TotalDead.forEach((data)=> {
         this.chartData.push(data.ndeaths)
       }) 
 
@@ -227,15 +225,14 @@ export default {
     },
     getTodayLabels() {
       this.dailyChartLabels = []
-      this.$store.state.fetchDailyDead.DailyDead.data.forEach((data)=> {
+      this.$store.state.wholeCountry.TotalDead.forEach((data)=> {
         this.dailyChartLabels.push(data.date)
       })
+      this.dailyChartLabels.shift()
     },
     getTodayChartData() {
-      this.dailyChartData = []
-      this.$store.state.fetchDailyDead.DailyDead.data.forEach((data)=> {
-        this.dailyChartData.push(data.dailydead)
-      })       },
+      this.dailyChartData = this.$store.getters["wholeCountry/fetchDailyDead"]
+      },
     // 累計グラフと日別グラフの処理を管理
     changeGraphTerm(e) {
       e.target.value === '2' ? this.dailyGraph() : this.fillData()

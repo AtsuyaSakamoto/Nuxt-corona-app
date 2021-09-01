@@ -138,7 +138,7 @@ export default {
 
     getLabels() {
       this.chartLabels = []
-      this.$store.state.fetchTotalData.TotalData.forEach((data)=> {
+      this.$store.state.wholeCountry.TotalData.forEach((data)=> {
         this.chartLabels.push(data.date)
       })
 
@@ -146,7 +146,7 @@ export default {
     },
     getChartData() {
       this.chartData = []
-      this.$store.state.fetchTotalData.TotalData.forEach((data)=> {
+      this.$store.state.wholeCountry.TotalData.forEach((data)=> {
         this.chartData.push(data.npatients)
       })   
     },
@@ -222,15 +222,16 @@ export default {
     },
     getTodayLabels() {
       this.dailyChartLabels = []
-      this.$store.state.fetchDailyData.DailyData.data.forEach((data)=> {
+      this.$store.state.wholeCountry.TotalData.forEach((data)=> {
         this.dailyChartLabels.push(data.date)
       })
     },
     getTodayChartData() {
       this.dailyChartData = []
-      this.$store.state.fetchDailyData.DailyData.data.forEach((data)=> {
-        this.dailyChartData.push(data.dailycorona)
-      })       },
+      this.$store.state.wholeCountry.TotalData.forEach((data)=> {
+        this.dailyChartData.push(data.adpatients)
+      })
+    },
     // 累計グラフと日別グラフの処理を管理
     changeGraphTerm(e) {
       e.target.value === '2' ? this.dailyGraph() : this.fillData()
