@@ -1,11 +1,9 @@
-
-
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'ラクラクコロナ',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ja',
     },
     meta: [
       { charset: 'utf-8' },
@@ -38,7 +36,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/google-gtag'
+    '@nuxtjs/google-gtag',
   ],
   'google-gtag': {
     id: 'G-LBBVZG2X9B',
@@ -51,6 +49,6 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['vue-final-modal'],
-    analyze: true
+    // analyze: true
   },
 }
