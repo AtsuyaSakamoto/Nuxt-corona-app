@@ -144,7 +144,6 @@ export default {
         this.chartLabels.push(data.date)
       })
 
-
     },
     getChartData() {
       this.chartData = []
