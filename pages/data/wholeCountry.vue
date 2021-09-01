@@ -10,12 +10,10 @@
     </div>
   </div>
 </template>
-
 <script>
-import axios from 'axios'
-import WholeDead from '../../components/wholeCountry/WholeDead.vue'
-import WholeCorona from '../../components/wholeCountry/WholeCorona.vue'
-
+import axios from "axios"
+import WholeDead from "../../components/wholeCountry/WholeDead.vue"
+import WholeCorona from "../../components/wholeCountry/WholeCorona.vue"
 export default {
   components: {
     WholeDead,
@@ -24,7 +22,7 @@ export default {
 
 async fetch( {store,error} ) {
   try{
-    await axios.get('https://data.corona.go.jp/converted-json/covid19japan-npatients.json').then((res) => {
+    await axios.get("https://data.corona.go.jp/converted-json/covid19japan-npatients.json").then((res) => {
       store.dispatch("wholeCountry/setFetchTotalData", res.data)
     })
     await axios
@@ -34,9 +32,7 @@ async fetch( {store,error} ) {
       store.dispatch("wholeCountry/setFetchTotalDead",res.data)
     })
   }catch(err){
-      // eslint-disable-next-line no-console
-      console.log(err.response)
-      error({
+    error({
       statusCode: err.response.status,
     });
   }

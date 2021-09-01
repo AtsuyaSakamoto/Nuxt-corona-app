@@ -5,13 +5,8 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-import axios from "axios"
-import Content from '../../components/bedUsage/Content'
-=======
 import axios from 'axios'
 import Content from '../../components/bedUsage/content'
->>>>>>> 3de696a88b9e6bbabd323dfa624728c4a27251ce
 
 export default {
   components: {

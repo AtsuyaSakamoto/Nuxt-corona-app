@@ -7,14 +7,6 @@ import Index from '../pages/index.vue'
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-jest.mock("axios", () => ({
-  get: jest.fn(() => Promise.resolve({data:[
-    {id:1, name: "naoki"},
-    {id:2, name: "ki"},
-  ]}))
-})
-)
-
 
 describe('トップページのテスト', () => {
   let store
