@@ -20,8 +20,13 @@
 
 <script>
   export default {
-    props: ['error'],
-    mounted(){
+    props:{
+      error: {
+        type: Object,
+        default: () => {}
+      }
+    },
+    created(){
       const redirect = () => {
         this.$router.push("/")
       }
