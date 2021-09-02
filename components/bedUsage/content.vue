@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1
+      id="title"
       class="
         text-center text-sm
         sm:text-base
@@ -28,6 +29,7 @@
       >
         <div v-for="(data, index) in dataArry" :key="data.id">
           <div
+           id="card"
             class="relative py-1 px-1 rounded-md w-36 hover:bg-gray-700"
             :class="
               data.use_bed_rate_hospitalization > 100
@@ -69,7 +71,7 @@
   </div>
 </template>
 <script>
-import Modal from './bedUsageModal.vue'
+import Modal from './Modal.vue'
 export default {
   components: {
     Modal,
@@ -77,7 +79,6 @@ export default {
   props: {
     dataArry: {
       type: Array,
-      default: () => [],
     },
   },
   data() {
@@ -87,8 +88,8 @@ export default {
   },
   methods: {
     show(index) {
-      this.$refs.modal.show()
       this.modalData = this.dataArry[index]
+      this.$refs.modal.show()
     },
   },
 }
