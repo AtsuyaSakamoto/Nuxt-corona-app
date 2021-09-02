@@ -1,10 +1,33 @@
 export const state = () => ({
   parseData: [],
+  positive_num:[],
+  pcr_test_date:[],
+  pcr_test_num:[],
 })
 
 export const mutations = {
   setParseData(state, parseData) {
+    
     state.parseData = parseData
+
+    const  PositiveNumArry = []
+    parseData.forEach(data=>{
+      PositiveNumArry.push(Number(data.pcr_positive_num))
+    })
+    console.log(typeof(PositiveNumArry[1]))
+    state.positive_num = PositiveNumArry
+
+    const PcrTestNum = []
+    parseData.forEach(data=>{
+      PcrTestNum.push(Number(data.pcr_test_num))
+    })
+    state.pcr_test_num = PcrTestNum
+
+    const PcrTestDate = []
+    parseData.forEach(data=>{
+      PcrTestDate.push(data.date)
+    })
+    state.pcr_test_date = PcrTestDate
   },
 }
 

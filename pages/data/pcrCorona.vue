@@ -1,12 +1,18 @@
 <template>
-  <Content :pcr-parse-data="pcrParseData" />
+  <Content 
+  :positive-num="positiveNum"
+  :pcr-test-date="pcrTestDate"
+  :pcr-test-num="pcrTestNum"
+  />
 </template>
 
 <script>
 import axios from 'axios'
 import Papa from 'papaparse'
+import { mapState } from "vuex"
 import Content from '../../components/pcrCorona/content'
 export default {
+  name:"PcrCorona",
   components: {
     Content,
   },
@@ -35,10 +41,11 @@ export default {
       })
     }
   },
-  computed: {
-    pcrParseData() {
-      return this.$store.state.pcr.parseData
-    },
-  },
+  computed: 
+    mapState({
+      positiveNum: state => state.pcr.positive_num,
+      pcrTestDate: state => state.pcr.pcr_test_date,
+      pcrTestNum: state => state.pcr.pcr_test_num,
+    })
 }
 </script>
