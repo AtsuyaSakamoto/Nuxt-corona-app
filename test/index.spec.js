@@ -17,6 +17,7 @@ describe('トップページのテスト', () => {
     actions = {
       fetchTotalData: jest.fn()
     }
+    // eslint-disable-next-line import/no-named-as-default-member
     store = new Vuex.Store({
       state: {
         totalInfection:{
@@ -70,6 +71,7 @@ describe('トップページの子要素テスト', () => {
   let wrapper 
 
   beforeEach(() => {
+    // eslint-disable-next-line import/no-named-as-default-member
     store = new Vuex.Store({
       state: {
         totalInfection:{
