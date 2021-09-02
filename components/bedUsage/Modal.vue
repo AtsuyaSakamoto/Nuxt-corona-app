@@ -5,11 +5,11 @@
       classes="flex justify-center items-center text-white"
     >
       <div class="bg-gray-900 rounded p-5">
-        <p class="text-base sm:text-lg md:text-xl m-7 text-center">
+        <h1 class="text-base sm:text-lg md:text-xl m-7 text-center">
           {{ modalData.prefecture_name }} 病床使用率{{
             modalData.use_bed_rate_hospitalization
           }}%
-        </p>
+        </h1>
         <div class="modalContent">
           <Chart :chart-data="chartData" :styles="styles"/>
           <div class="mt-5 text-xs">
@@ -41,7 +41,6 @@ export default {
   props: {
     modalData: {
       type: Object,
-      default: () => {},
     },
   },
   data() {
@@ -64,7 +63,6 @@ export default {
         datasets: [
           {
             backgroundColor: [
-              '#333333',
               '#ff3300',
             ],
             data: [

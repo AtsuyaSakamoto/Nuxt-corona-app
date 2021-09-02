@@ -15,8 +15,16 @@ export default{
     LineChart
   },
   props:{
-    pcrParseData:{
-      type: Array,
+    positiveNum:{
+      type:Array,
+       default:() => {}
+    },
+    pcrTestDate:{
+      type:Array,
+      default:() => {}
+    },
+    pcrTestNum:{
+      type:Array,
       default:() => {}
     }
   },
@@ -24,44 +32,29 @@ export default{
     return{
       chartDataArry:{},
       options:{},
-      positive_num:[],
-      pcr_test_date:[],
-      pcr_test_num:[],
     }
   },
-  created(){
-      this.pcrParseData.forEach(data=>{
-        this.pcr_test_date.push(data.date)
-      })
-      this.pcrParseData.forEach(data=>{
-        this.positive_num.push(data.pcr_positive_num)
-      })
-      this.pcrParseData.forEach(data=>{
-        this.pcr_test_num.push(data.pcr_test_num)
-      })
-    },
-
   mounted(){
     this.fillData()
   },
   methods:{
     fillData(){
       this.chartDataArry ={
-        labels: this.pcr_test_date,
+        labels: this.pcrTestDate,
         datasets: [
           {
             backgroundColor: [
               'rgba(235, 204, 0, 0.3)',
             ],
             color:["#fff"],
-            data: this.pcr_test_num,
+            data: this.pcrTestNum,
             label:["PCR検査数"]
           },
           {
             backgroundColor: [
               'rgba(255, 60, 60, 0.3)',
             ],
-            data: this.positive_num,
+            data: this.positiveNum,
             label:["陽性者数"]
           },
         ],
