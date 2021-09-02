@@ -22,9 +22,9 @@
         >
           {{stage}}
         </p>
-        <nuxt-link to="/data/bedusage">
+        <!-- <nuxt-link to="/data/bedusage"> -->
         <p class="mt-5 underline text-blue-600 md:text-xl">都道府県ごとの病床使用率</p>
-        </nuxt-link>
+        <!-- </nuxt-link> -->
       </div>
     </div>
     <!-- Card 2 -->
@@ -70,19 +70,15 @@ export default{
   props:{
     infectionData:{
       type: Object,
-      default: () => {}
     },
     deathData:{
       type:Object,
-      default:() => {}
     },
     pcrData:{
       type:Object,
-      default:() => {}
     },
      wholeCountryBedUsage:{
        type: Number,
-       default:() => {}
      }
   },
   computed:{

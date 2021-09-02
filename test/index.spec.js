@@ -104,7 +104,8 @@ describe('トップページの子要素テスト', () => {
           positive_rate:10,
           positive_rate_yesterday:20,
           positive_rate_oneWeekAgo:30
-        }
+        },
+        wholeCountryBedUsage:55
       }
     })
   })
@@ -114,5 +115,8 @@ describe('トップページの子要素テスト', () => {
   })
   test('子要素のタイトルテキストの確認', () => {
     expect(wrapper.text()).toContain("新型コロナウイルス国内感染状況")
+  })
+  test('子要素のタイトルテキストの確認', () => {
+    expect(wrapper.vm.stage === "ステージ４")
   })
 })
