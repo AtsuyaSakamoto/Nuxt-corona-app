@@ -10,13 +10,15 @@ describe('Aboutのテスト', () => {
     expect(wrapper.vm).toBeTruthy()
   })
   test('Aboutページのタイトルのタグ確認', () => {
-    expect(wrapper.text()).toContain("当サイトに関して")
+    expect(wrapper.text()).toContain('当サイトに関して')
   })
   test('アンカータグの中身確認', () => {
-    const source = wrapper.get("#source")
-    expect(source.text()).toBe("日本放送協会（NHK） 提供: 都道府県ごとの感染者数の推移情報")
+    const source = wrapper.get('#source')
+    expect(source.text()).toBe(
+      '日本放送協会（NHK） 提供: 都道府県ごとの感染者数の推移情報'
+    )
   })
   test('ulタグが存在するかの確認', () => {
-   expect(wrapper.contains("ul")).toBe(true)
+    expect(wrapper.contains('ul')).toBe(true)
   })
 })
