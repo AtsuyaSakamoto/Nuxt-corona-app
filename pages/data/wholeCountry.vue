@@ -1,6 +1,6 @@
 <template>
   <div class="pt-10 px-30 bg-gray-900">
-    <div class="grid grid-cols-1 gap-6 mr-5 sm:mx-20 md:mx-36 lg:grid-cols-2">
+    <div class="grid grid-cols-1 gap-6 ml-3 mr-8 sm:mx-20 md:mx-36 lg:grid-cols-2">
       <div>
         <WholeDead />
       </div>
@@ -19,6 +19,7 @@ export default {
     WholeDead,
     WholeCorona,
   },
+
 async fetch( {store,error} ) {
   try{
     await axios.get("https://data.corona.go.jp/converted-json/covid19japan-npatients.json").then((res) => {
