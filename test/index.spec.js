@@ -13,6 +13,7 @@ describe('トップページのテスト', () => {
   let wrapper 
   let actions 
   beforeEach(() => {
+
     actions = {
       fetchTotalData: jest.fn()
     }
