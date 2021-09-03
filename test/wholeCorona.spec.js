@@ -1,45 +1,80 @@
 import { shallowMount,createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
-import WholeCorona from '../components/wholeCountry/WholeCorona.vue'
+import wholeCorona from '../components/wholeCountry/WholeCorona.vue'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-describe('全国コロナ情報ページのテスト', () => {
+describe('WholeCoronaのテスト', () => {
   let store
   beforeEach(() => {
     // eslint-disable-next-line import/no-named-as-default-member
     store = new Vuex.Store({
       state: {
         wholeCountry:{
-          TotalData:[]
+          TotalData:[
+            {
+              date: '2020-04-21',
+              npatients:11350,
+              adpatients:370
+            },
+          ]
         }
       },
     })
   })
-  const wrapper = shallowMount(WholeCorona , {
-    store,
-    localVue,
-    propsData:{
-      selected_pref_code: 1,
-      datacollection: Object,
-      chartLabels: [],
-      chartData: [],
-      dailyChartLabels: [],
-      dailyChartData: [],
-      graphSwich: true,
-      graphOption: Object,
-      myStyles: { posision: 'relative' },
-    }
-  })
-  test('全国コロナ情報ページのHTML要素のテスト', () => {
-    console.log(wrapper.html())
-  })
-  test('getLabelsのテスト', () => {
-    expect(wrapper.vm.getLabels).toBe('2020-07-21') // 通る
+  test('inputタグのイベント発火テスト', () => {
+    const wrapper = shallowMount(wholeCorona, {
+      store,
+      localVue,
+    })
+    wrapper.get('input').trigger('change')
   })
 
-  test('getLabelsのテスト(落ちるパターン)', () => {
-    expect(wrapper.vm.getLabels).toBe('2000-07-21') // NG
+  test('getTodayLabels メソッド', () => {
+    const wrapper = shallowMount(wholeCorona, {
+      store,
+      localVue,
+    })
+    wrapper.vm.getTodayLabels()
+    const dailyChartLabels = wrapper.vm.dailyChartLabels
+    expect(dailyChartLabels).not.toBe([])
+  })
+
+  test('getTodayChartData メソッド', () => {
+    const wrapper = shallowMount(wholeCorona, {
+      store,
+      localVue,
+    })
+    wrapper.vm.getTodayChartData()
+    expect(wrapper.vm.dailyChartData).not.toBe([])
+  })
+
+  test('dailyGraph メソッド', () => {
+    const wrapper = shallowMount(wholeCorona, {
+      store,
+      localVue,
+    })
+    wrapper.vm.dailyGraph()
+  })
+  test('changeGraph メソッドの条件分岐', () => {
+    const wrapper = shallowMount(wholeCorona, {
+      store,
+      localVue,
+    })
+    wrapper.vm.changeGraphTeam()
+    if (wrapper.vm.graphSwich === true) {
+      wrapper.vm.fillData()
+    } else {
+      wrapper.vm.dailyGraph()
+    }
+
+    wrapper.vm.graphSwich = false
+    wrapper.vm.changeGraphTeam()
+    if (wrapper.vm.graphSwich === true) {
+      wrapper.vm.fillData()
+    } else {
+      wrapper.vm.dailyGraph()
+    }
   })
 })

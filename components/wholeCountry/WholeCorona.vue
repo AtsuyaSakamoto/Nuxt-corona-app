@@ -55,13 +55,13 @@ export default {
   data() {
     return {
       selected_pref_code: 1,
-      datacollection: {},
+      datacollection: Object,
       chartLabels: [],
       chartData: [],
       dailyChartLabels: [],
       dailyChartData: [],
       graphSwich: true,
-      graphOption: {},
+      graphOption: Object,
       myStyles: { posision: 'relative' },
     }
   },
@@ -138,14 +138,11 @@ export default {
         },
       }
     },
-
     getLabels() {
       this.chartLabels = []
       this.$store.state.wholeCountry.TotalData.forEach((data)=> {
         this.chartLabels.push(data.date)
       })
-
-
     },
     getChartData() {
       this.chartData = []

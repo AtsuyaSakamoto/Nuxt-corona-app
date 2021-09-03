@@ -35,7 +35,46 @@ async fetch( {store,error} ) {
     error({
       statusCode: err.response.status,
     });
-  }
-  }
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        // ページの説明
+        {
+          hid: 'description',
+          name: 'description',
+          content: '全国のコロナウイルス感染状況を掲載しています。',
+        },
+        // ページのキーワード
+        {
+          hid: 'keyword',
+          name: 'keyword',
+          content: 'コロナ感染者,コロナ死亡者,全国コロナ',
+        },
+
+        // ページの種類 TOPページであれば「website」、TOP以外のページでは「article」
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        // ページ名
+        { hid: 'og:title', property: 'og:title', content: this.title },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: '全国のコロナウイルス感染状況を掲載しています。',
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://rakucoro-sakaaaa.vercel.app/data/wholecountry',
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: 'https://image.freepik.com/free-vector/covid-19-red-logo-template_23-2148501246.jpg',
+        },
+      ],
+    }
+  },
 }
 </script>
