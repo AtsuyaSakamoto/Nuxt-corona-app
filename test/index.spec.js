@@ -6,14 +6,12 @@ import Content from "../components/topPage/Content.vue"
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
-
-// 親コンポーネント（pages/index.vue）
+// 親コンポーネント（pages/index.vue
 describe('トップページのテスト', () => {
   let store
   let wrapper 
   let actions 
   beforeEach(() => {
-
     actions = {
       fetchTotalData: jest.fn()
     }
@@ -84,7 +82,6 @@ describe('トップページの子要素テスト', () => {
           comparison_oneWeek:200
         }
       },
-
     })
     wrapper =shallowMount(Content,{
       store,
@@ -118,5 +115,9 @@ describe('トップページの子要素テスト', () => {
   })
   test('子要素のタイトルテキストの確認', () => {
     expect(wrapper.vm.stage === "ステージ４")
+    if(wrapper.props().wholeCountryBedUsage > 20){
+      expect(wrapper.vm.stage === "ステージ3")
+    }
+
   })
 })

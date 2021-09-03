@@ -11,13 +11,13 @@
         <p 
         class="text-gray-800 mt-5 mx-2 md:mx-10 md:text-xl"
         :class="
-            wholeCountryBedUsage > 50
-            ? 'bg-red-600'
-            : wholeCountryBedUsage > 20
-            ? 'bg-red-400'
-            : wholeCountryBedUsage > 10
-            ? 'bg-red-100'
-            : 'bg-gray-300'
+          wholeCountryBedUsage > 50
+          ? 'bg-red-600'
+          : wholeCountryBedUsage > 20
+          ? 'bg-red-400'
+          : wholeCountryBedUsage > 10
+          ? 'bg-red-100'
+          : 'bg-gray-300'
         "
         >
           {{stage}}
