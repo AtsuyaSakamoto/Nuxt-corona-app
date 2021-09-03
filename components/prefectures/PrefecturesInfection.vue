@@ -8,7 +8,6 @@
 
       <input
         id="graphChoice1"
-        v-model="value"
         type="radio"
         name="selectGraph"
         value="1"
