@@ -2,7 +2,6 @@
   <div class="text-center">
     <h2 class="sm:text-2xl my-5 text-white lg:mt-8 lg:text-3xl">死亡者数推移</h2>
     <div class="inline-block bg-teal-400">
-
       <input
         id="graphChoice3"
         type="radio"
@@ -69,7 +68,6 @@ export default {
 
   created() {
     this.fillData()
-
   },
 
   methods: {
@@ -140,20 +138,17 @@ export default {
         },
       }
     },
-
     getLabels() {
       this.chartLabels = []
       this.$store.state.wholeCountry.TotalDead.forEach((data)=> {
         this.chartLabels.push(data.date)
       })
-
     },
     getChartData() {
       this.chartData = []
       this.$store.state.wholeCountry.TotalDead.forEach((data)=> {
         this.chartData.push(data.ndeaths)
       }) 
-
     },
     // 日別グラフへの切り替え
     dailyGraph() {
