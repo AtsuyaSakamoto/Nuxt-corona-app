@@ -41,6 +41,42 @@ export default {
       })
     }
   },
+  head() {
+    return{
+      title: "らくらくコロナ/PCR検査",
+      meta: [
+        // ページの説明
+        {
+          hid: 'description',
+          name: 'description',
+          content: '新型コロナウイルスのPCR検査数と陽性者数を掲載するページ。',
+        },
+        // ページのキーワード
+        {
+          hid: 'keyword',
+          name: 'keyword',
+          content: '新型コロナウイルス,日本,PCR検査,陽性者数,PCR検査数,PCR陽性率',
+        },
+        { hid: 'og:type', property: 'og:type', content: '　 website' },
+        { hid: 'og:title', property: 'og:title', content: "らくらくコロナ/PCR検査" },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: '新型コロナウイルスのPCR検査数と陽性者数を掲載しています。',
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://rakucoro-atsuyasakamoto.vercel.app/',
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: "../static/image/logo.png",
+        },
+      ],
+    }
+    },
   computed: 
     mapState({
       positiveNum: state => state.pcr.positive_num,
