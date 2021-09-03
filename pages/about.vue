@@ -104,3 +104,49 @@
     </div>
   </div>
 </template>
+
+<script>
+
+export default {
+  head() {
+    return {
+      title: "らくらくコロナ",
+      meta: [
+        // ページの説明
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'ラクラクコロナの概要ページ。',
+        },
+        // ページのキーワード
+        {
+          hid: 'keyword',
+          name: 'keyword',
+          content: 'コロナ感染者,コロナ死亡者,全国コロナ',
+        },
+
+        // ページの種類 TOPページであれば「website」、TOP以外のページでは「article」
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        // ページ名
+        { hid: 'og:title', property: 'og:title', content:"らくらくコロナ"},
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'ラクラクコロナの概要ページ。',
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://rakucoro-sakaaaa.vercel.app/about',
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: 'https://image.freepik.com/free-vector/covid-19-red-logo-template_23-2148501246.jpg',
+        },
+      ],
+    }
+  },
+}
+</script>
+

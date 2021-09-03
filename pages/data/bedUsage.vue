@@ -27,7 +27,7 @@ export default {
   },
   head() {
     return{
-      title: "らくらくコロナ/病床使用率",
+      title: "らくらくコロナ",
       meta: [
         // ページの説明
         {
@@ -41,8 +41,8 @@ export default {
           name: 'keyword',
           content: '新型コロナウイルス,日本,病床使用率,都道府県,重症者数,入院患者数',
         },
-        { hid: 'og:type', property: 'og:type', content: '　 website' },
-        { hid: 'og:title', property: 'og:title', content: "らくらくコロナ/病床使用率" },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        { hid: 'og:title', property: 'og:title', content: "らくらくコロナ" },
         {
           hid: 'og:description',
           property: 'og:description',
@@ -51,12 +51,12 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: 'https://rakucoro-atsuyasakamoto.vercel.app/',
+          content: 'https://rakucoro-sakaaaa.vercel.app/data/bedusage',
         },
         {
           hid: 'og:image',
           property: 'og:image',
-          content: "../static/image/logo.png",
+          content: "https://image.freepik.com/free-vector/covid-19-red-logo-template_23-2148501246.jpg",
         },
       ],
     }

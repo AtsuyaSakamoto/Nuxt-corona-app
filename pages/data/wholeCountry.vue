@@ -39,7 +39,7 @@ async fetch( {store,error} ) {
   },
   head() {
     return {
-      title: this.title,
+      title: "らくらくコロナ",
       meta: [
         // ページの説明
         {
@@ -57,7 +57,7 @@ async fetch( {store,error} ) {
         // ページの種類 TOPページであれば「website」、TOP以外のページでは「article」
         { hid: 'og:type', property: 'og:type', content: 'article' },
         // ページ名
-        { hid: 'og:title', property: 'og:title', content: this.title },
+        { hid: 'og:title', property: 'og:title', content: "らくらくコロナ" },
         {
           hid: 'og:description',
           property: 'og:description',
@@ -78,3 +78,4 @@ async fetch( {store,error} ) {
   },
 }
 </script>
+
