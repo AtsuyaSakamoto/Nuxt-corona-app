@@ -25,6 +25,42 @@ export default {
       })
     }
   },
+  head() {
+    return{
+      title: "らくらくコロナ/病床使用率",
+      meta: [
+        // ページの説明
+        {
+          hid: 'description',
+          name: 'description',
+          content: '新型コロナウイルスの日本国内病床使用率',
+        },
+        // ページのキーワード
+        {
+          hid: 'keyword',
+          name: 'keyword',
+          content: '新型コロナウイルス,日本,病床使用率,都道府県,重症者数,入院患者数',
+        },
+        { hid: 'og:type', property: 'og:type', content: '　 website' },
+        { hid: 'og:title', property: 'og:title', content: "らくらくコロナ/病床使用率" },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: '都道府県ごとの病床使用率状況を掲載しています。。',
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://rakucoro-atsuyasakamoto.vercel.app/',
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: "../static/image/logo.png",
+        },
+      ],
+    }
+  },
   computed: {
     bedUsage() {
       return this.$store.state.bedusage.bedUsageData

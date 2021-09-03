@@ -81,17 +81,41 @@ export default {
       })
     }
   },
-  head: {
-    title: 'コロナ情報サイト',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'my website description',
-      },
-    ],
+  head() {
+    return{
+      title: "らくらくコロナ",
+      meta: [
+        // ページの説明
+        {
+          hid: 'description',
+          name: 'description',
+          content: '新型コロナウイルスの日本国内感染状況',
+        },
+        // ページのキーワード
+        {
+          hid: 'keyword',
+          name: 'keyword',
+          content: '新型コロナウイルス,日本,病床使用率,類券感染者数,累計死亡者数,PCR陽性率',
+        },
+        { hid: 'og:type', property: 'og:type', content: '　 website' },
+        { hid: 'og:title', property: 'og:title', content: "らくらくコロナ" },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: '新型コロナウイルスの国内状況を掲載するサイトです。',
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://rakucoro-atsuyasakamoto.vercel.app/',
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: "../static/image/logo.png",
+        },
+      ],
+    }
   },
   computed: {
     infectionData() {
@@ -107,5 +131,6 @@ export default {
       return this.$store.getters['bedusage/wholeCountryBedUsage']
     },
   },
+  
 }
 </script>

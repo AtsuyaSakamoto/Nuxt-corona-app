@@ -43,8 +43,15 @@ describe('prefectures', () => {
       localVue,
     })
     expect(wrapper.exists()).toBeTruthy()
-    console.log(wrapper.html())
   })
+  test('fetchフックが存在することの確認', () => {
+    const wrapper = shallowMount(prefectures, {
+      store,
+      localVue,
+    })
+    expect(wrapper.vm.$options.fetch({ store})).toBeInstanceOf(Promise)
+  })
+  
   // test('非同期通信のテスト', async () => {
   //   const data = await fetch()
   //   expect(data).toBe({})
