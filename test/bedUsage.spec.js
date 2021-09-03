@@ -34,6 +34,9 @@ describe('病床使用率のテスト', () => {
   test('子要素を含んでいるのかの確認', () => {
     expect(wrapper.get("content-stub") === true)
   })
+  test('fetchフックが存在することの確認', () => {
+    expect(wrapper.vm.$options.fetch({ store})).toBeInstanceOf(Promise)
+  })
   test('computedの確認', () => {
     expect(wrapper.vm.bedUsage).toMatchObject([{
       id:1,

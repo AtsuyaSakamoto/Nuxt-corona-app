@@ -113,11 +113,124 @@ describe('トップページの子要素テスト', () => {
   test('子要素のタイトルテキストの確認', () => {
     expect(wrapper.text()).toContain("新型コロナウイルス国内感染状況")
   })
-  test('子要素のタイトルテキストの確認', () => {
-    expect(wrapper.vm.stage === "ステージ４")
-    if(wrapper.props().wholeCountryBedUsage > 20){
-      expect(wrapper.vm.stage === "ステージ3")
-    }
-
+  test('computedの条件分岐の確認', () => {
+    const store = new Vuex.Store({
+      state: {
+        totalInfection:{
+          latestDate: "2021-09-01",
+          totalInfection: 1300000,
+          comparison_yesterday: 20000,
+          comparison_oneWeek: 150000
+        },
+        totalDeath:{
+          totalDeath: 15000,
+          comparison_yesterday: 50,
+          comparison_oneWeek:200
+        }
+      },
+    })
+    wrapper =shallowMount(Content,{
+      store,
+      localVue,
+      propsData:{
+        infectionData:{
+          totalInfection:10000,
+          comparison_yesterday:100,
+          comparison_oneWeek: 500
+        },
+        deathData:{
+          totalDeath: 10000,
+          comparison_yesterday:50,
+          comparison_oneWeek:200
+        },
+        pcrData:{
+          positive_rate:10,
+          positive_rate_yesterday:20,
+          positive_rate_oneWeekAgo:30
+        },
+        wholeCountryBedUsage:21
+      }
+    })
+    expect(wrapper.vm.stage).toBe("ステージ３")
+  })
+  test('computedの条件分岐の確認', () => {
+    const store = new Vuex.Store({
+      state: {
+        totalInfection:{
+          latestDate: "2021-09-01",
+          totalInfection: 1300000,
+          comparison_yesterday: 20000,
+          comparison_oneWeek: 150000
+        },
+        totalDeath:{
+          totalDeath: 15000,
+          comparison_yesterday: 50,
+          comparison_oneWeek:200
+        }
+      },
+    })
+    wrapper =shallowMount(Content,{
+      store,
+      localVue,
+      propsData:{
+        infectionData:{
+          totalInfection:10000,
+          comparison_yesterday:100,
+          comparison_oneWeek: 500
+        },
+        deathData:{
+          totalDeath: 10000,
+          comparison_yesterday:50,
+          comparison_oneWeek:200
+        },
+        pcrData:{
+          positive_rate:10,
+          positive_rate_yesterday:20,
+          positive_rate_oneWeekAgo:30
+        },
+        wholeCountryBedUsage:11
+      }
+    })
+    expect(wrapper.vm.stage).toBe("ステージ２")
+  })
+  test('computedの条件分岐の確認', () => {
+    const store = new Vuex.Store({
+      state: {
+        totalInfection:{
+          latestDate: "2021-09-01",
+          totalInfection: 1300000,
+          comparison_yesterday: 20000,
+          comparison_oneWeek: 150000
+        },
+        totalDeath:{
+          totalDeath: 15000,
+          comparison_yesterday: 50,
+          comparison_oneWeek:200
+        }
+      },
+    })
+    wrapper =shallowMount(Content,{
+      store,
+      localVue,
+      propsData:{
+        infectionData:{
+          totalInfection:10000,
+          comparison_yesterday:100,
+          comparison_oneWeek: 500
+        },
+        deathData:{
+          totalDeath: 10000,
+          comparison_yesterday:50,
+          comparison_oneWeek:200
+        },
+        pcrData:{
+          positive_rate:10,
+          positive_rate_yesterday:20,
+          positive_rate_oneWeekAgo:30
+        },
+        wholeCountryBedUsage:9
+      }
+    })
+    expect(wrapper.vm.stage).toBe("ステージ１")
   })
 })
