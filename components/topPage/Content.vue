@@ -11,20 +11,20 @@
         <p 
         class="text-gray-800 mt-5 mx-2 md:mx-10 md:text-xl"
         :class="
-            wholeCountryBedUsage > 50
-            ? 'bg-red-600'
-            : wholeCountryBedUsage > 20
-            ? 'bg-red-400'
-            : wholeCountryBedUsage > 10
-            ? 'bg-red-100'
-            : 'bg-gray-300'
+          wholeCountryBedUsage > 50
+          ? 'bg-red-600'
+          : wholeCountryBedUsage > 20
+          ? 'bg-red-400'
+          : wholeCountryBedUsage > 10
+          ? 'bg-red-100'
+          : 'bg-gray-300'
         "
         >
           {{stage}}
         </p>
-        <nuxt-link to="/data/bedusage">
+        <!-- <nuxt-link to="/data/bedusage"> -->
         <p class="mt-5 underline text-blue-600 md:text-xl">都道府県ごとの病床使用率</p>
-        </nuxt-link>
+        <!-- </nuxt-link> -->
       </div>
     </div>
     <!-- Card 2 -->
@@ -70,19 +70,15 @@ export default{
   props:{
     infectionData:{
       type: Object,
-      default: () => {}
     },
     deathData:{
       type:Object,
-      default:() => {}
     },
     pcrData:{
       type:Object,
-      default:() => {}
     },
      wholeCountryBedUsage:{
        type: Number,
-       default:() => {}
      }
   },
   computed:{
