@@ -74,7 +74,7 @@ export default {
 
   head() {
     return {
-      title:"らくらくコロナ",
+      title: 'らくらくコロナ',
       meta: [
         // ページの説明
         {
@@ -92,7 +92,7 @@ export default {
         // ページの種類 TOPページであれば「website」、TOP以外のページでは「article」
         { hid: 'og:type', property: 'og:type', content: 'article' },
         // ページ名
-        { hid: 'og:title', property: 'og:title', content: "らくらくコロナ" },
+        { hid: 'og:title', property: 'og:title', content: 'らくらくコロナ' },
         {
           hid: 'og:description',
           property: 'og:description',
@@ -106,7 +106,8 @@ export default {
         {
           hid: 'og:image',
           property: 'og:image',
-          content: 'https://image.freepik.com/free-vector/covid-19-red-logo-template_23-2148501246.jpg',
+          content:
+            'https://image.freepik.com/free-vector/covid-19-red-logo-template_23-2148501246.jpg',
         },
       ],
     }
