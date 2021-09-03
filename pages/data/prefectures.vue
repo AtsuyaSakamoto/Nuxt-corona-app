@@ -106,7 +106,7 @@ export default {
         {
           hid: 'og:image',
           property: 'og:image',
-          content: 'https://hogehoge.com/img/ogp/about.jpg',
+          // content: 'https://hogehoge.com/img/ogp/about.jpg',
         },
       ],
     }
