@@ -56,24 +56,4 @@ describe('WholeDeadのテスト', () => {
     })
     wrapper.vm.dailyGraph()
   })
-  test('changeGraphTerm メソッド', () => {
-    const wrapper = shallowMount(wholeDead, {
-      store,
-      localVue,
-    })
-    wrapper.vm.changeGraphTerm()
-    if (wrapper.vm.graphSwich === true) {
-      wrapper.vm.fillData()
-    } else {
-      wrapper.vm.dailyGraph()
-    }
-
-    wrapper.vm.changeGraphTerm()
-    wrapper.vm.graphSwich = false
-    if (wrapper.vm.graphSwich === false) {
-      wrapper.vm.dailyGraph()
-    } else {
-      wrapper.vm.fillData()
-    }
-  })
 })
