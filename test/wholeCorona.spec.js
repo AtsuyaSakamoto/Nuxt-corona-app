@@ -57,24 +57,4 @@ describe('WholeCoronaのテスト', () => {
     })
     wrapper.vm.dailyGraph()
   })
-  test('changeGraph メソッドの条件分岐', () => {
-    const wrapper = shallowMount(wholeCorona, {
-      store,
-      localVue,
-    })
-    wrapper.vm.changeGraphTeam()
-    if (wrapper.vm.graphSwich === true) {
-      wrapper.vm.fillData()
-    } else {
-      wrapper.vm.dailyGraph()
-    }
-
-    wrapper.vm.graphSwich = false
-    wrapper.vm.changeGraphTeam()
-    if (wrapper.vm.graphSwich === true) {
-      wrapper.vm.fillData()
-    } else {
-      wrapper.vm.dailyGraph()
-    }
-  })
 })
