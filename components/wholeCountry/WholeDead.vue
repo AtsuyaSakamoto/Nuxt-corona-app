@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <h2 class="sm:text-2xl my-5 text-white lg:mt-8 lg:text-3xl">死亡者数推移</h2>
+    <h1 class="sm:text-2xl my-5 text-white lg:mt-8 lg:text-3xl">死亡者数推移</h1>
     <div class="inline-block bg-teal-400">
       <input
         id="graphChoice3"

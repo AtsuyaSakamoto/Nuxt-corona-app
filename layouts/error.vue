@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <div
       v-show="error.statusCode === 404"
       class="
@@ -38,8 +38,8 @@
         xl:mx-96
       "
     >
-      <h1 class="text-4xl font-semibold lg:text-5xl lg:mt-7">５００</h1>
-      <h2 class="mt-3 text-lg lg:text-2xl">予期せぬエラーが発生しました。</h2>
+      <p class="text-4xl font-semibold lg:text-5xl lg:mt-7">５００</p>
+      <p class="mt-3 text-lg lg:text-2xl">予期せぬエラーが発生しました。</p>
       <img src="/image/error.png" class="w-32 h-32 mx-auto lg:w-52 lg:h-52" />
       <nuxt-link to="/">
         <p class="my-5 underline text-blue-700 text-xl">トップページに戻る</p>

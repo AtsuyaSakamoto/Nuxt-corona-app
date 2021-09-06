@@ -1,8 +1,8 @@
 <template>
   <div class="text-center">
-    <h2 class="sm:text-2xl my-5 text-white lg:mt-8 lg:text-3xl">
+    <h1 class="sm:text-2xl my-5 text-white lg:mt-8 lg:text-3xl">
       都道府県別死者数
-    </h2>
+    </h1>
     <div class="inline-block bg-teal-400">
       <PrefecturesSelect class="mb-2" @select-prefecture="changeGraph" />
 
