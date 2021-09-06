@@ -38,20 +38,20 @@
     </div>
     <!-- Card 3 -->
       <div class="p-4 bg-white border-2 border-gray-200 rounded-lg dark:bg-gray-800 lg:mx-12">
-         <div class="text-center">
-            <h4 id="name" class="text-xl font-semibold mb-2 md:text-2xl mt-3">累計死亡者数</h4>
-            <p class="text-gray-800 mt-3 text-xl">{{deathData.totalDeath.toLocaleString()}}人</p>
-            <p class="text-gray-800 mt-3 md:text-xl">前日比：+{{deathData.comparison_yesterday.toLocaleString()}}人</p>
-            <p class="text-gray-800 mt-2 md:text-xl">前週比：+{{deathData.comparison_oneWeek.toLocaleString()}}人</p>
-         </div>
+      <div class="text-center">
+          <h4 id="name" class="text-xl font-semibold mb-2 md:text-2xl mt-3">累計死亡者数</h4>
+          <p class="text-gray-800 mt-3 text-xl">{{deathData.totalDeath.toLocaleString()}}人</p>
+          <p class="text-gray-800 mt-3 md:text-xl">前日比：+{{deathData.comparison_yesterday.toLocaleString()}}人</p>
+          <p class="text-gray-800 mt-2 md:text-xl">前週比：+{{deathData.comparison_oneWeek.toLocaleString()}}人</p>
+      </div>
     </div>
     <!-- Card 4 -->
       <div class="p-4 bg-white border-2 border-gray-200 rounded-lg dark:bg-gray-800 lg:mx-12">
          <div id="body" class="text-center">
-            <h4 id="name" class="text-xl font-semibold mb-2 mt-3 md:text-2xl">PCR検査陽性率</h4>
-            <p id="job" class="text-gray-800 text-xl mt-2">{{pcrData.positive_rate}}%</p>
-            <p id="job" class="text-gray-800 mt-2 md:text-xl">前日：{{pcrData.positive_rate_yesterday}}%</p>
-            <p id="job" class="text-gray-800 mt-2 md:text-xl">前週：{{pcrData.positive_rate_oneWeekAgo}}%</p>
+          <h4 id="name" class="text-xl font-semibold mb-2 mt-3 md:text-2xl">PCR検査陽性率</h4>
+          <p id="job" class="text-gray-800 text-xl mt-2">{{pcrData.positive_rate}}%</p>
+          <p id="job" class="text-gray-800 mt-2 md:text-xl">前日：{{pcrData.positive_rate_yesterday}}%</p>
+          <p id="job" class="text-gray-800 mt-2 md:text-xl">前週：{{pcrData.positive_rate_oneWeekAgo}}%</p>
          </div>
     </div>
   </div>
