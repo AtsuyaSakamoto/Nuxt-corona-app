@@ -11,7 +11,7 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: './static/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -39,7 +39,7 @@ export default {
     '@nuxtjs/google-gtag',
   ],
   'google-gtag': {
-    id: 'G-LBBVZG2X9B',
+    id: 'G-NTBQTF1376',
     debug: true, // Enable to track in dev mode.
   },
 
