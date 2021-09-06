@@ -82,6 +82,6 @@ export default {
       positiveNum: state => state.pcr.positive_num,
       pcrTestDate: state => state.pcr.pcr_test_date,
       pcrTestNum: state => state.pcr.pcr_test_num,
-    })
+    }),
 }
 </script>

@@ -36,10 +36,40 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/google-gtag',
+    '@nuxtjs/sitemap'
   ],
   'google-gtag': {
     id: 'G-NTBQTF1376',
     debug: true, // Enable to track in dev mode.
+  },
+  sitemap: {
+    hostname: 'https://rakucoro-sakaaaa.vercel.app/',
+    routes:[
+      {
+        url:"/data/pcrcorona",
+        lastmod: new Date().toLocaleString({ timeZone: 'Asia/Tokyo' })
+      },
+      {
+        url:"/data/bedusage",
+        lastmod: new Date().toLocaleString({ timeZone: 'Asia/Tokyo' })
+      },
+      {
+        url:"/data/prefectures",
+        lastmod: new Date().toLocaleString({ timeZone: 'Asia/Tokyo' })
+      },
+      {
+        url:"/data/wholecountry",
+        lastmod: new Date().toLocaleString({ timeZone: 'Asia/Tokyo' })
+      },
+      {
+        url:"/about",
+        lastmod: "2021-09-01"
+      },
+      {
+        url:"/",
+        lastmod: new Date().toLocaleString({ timeZone: 'Asia/Tokyo' })
+      }
+    ]
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
