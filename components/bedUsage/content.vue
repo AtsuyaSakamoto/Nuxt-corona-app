@@ -29,7 +29,7 @@
       >
         <div v-for="(data, index) in dataArry" :key="data.id">
           <div
-           id="card"
+            id="card"
             class="relative py-1 px-1 rounded-md w-36 hover:bg-gray-700"
             :class="
               data.use_bed_rate_hospitalization > 100
@@ -46,7 +46,7 @@
               {{ data.prefecture_name }}
             </p>
             <p class="text-sm font-normal text-white text-center">
-              {{ data.use_bed_rate_hospitalization }}%
+              {{ data.use_bed_rate_severe }}
             </p>
             <p class="text-sm font-normal text-white text-center">
               {{ data.num_hospitalization }}人/{{

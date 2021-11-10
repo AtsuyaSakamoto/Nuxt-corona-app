@@ -7,11 +7,11 @@
       <div class="bg-gray-900 rounded p-5">
         <h1 class="text-base sm:text-lg md:text-xl m-7 text-center">
           {{ modalData.prefecture_name }} 病床使用率{{
-            modalData.use_bed_rate_hospitalization
-          }}%
+            modalData.use_bed_rate_severe
+          }}
         </h1>
         <div class="modalContent">
-          <Chart :chart-data="chartData" :styles="styles"/>
+          <Chart :chart-data="chartData" :styles="styles" />
           <div class="mt-5 text-xs">
             <p>PCR検査要請者数：{{ modalData.per_positive }}人</p>
             <p>うち重傷者数：{{ modalData.num_severe }}人</p>
@@ -24,7 +24,12 @@
             </p>
             <p>最終更新日：{{ modalData.updateDate }}</p>
             <div class="text-center">
-            <button class="bg-white text-black m-1 p-1 underline" @click="showModal=false">close</button>
+              <button
+                class="bg-white text-black m-1 p-1 underline"
+                @click="showModal = false"
+              >
+                close
+              </button>
             </div>
           </div>
         </div>
@@ -39,6 +44,7 @@ export default {
     Chart,
   },
   props: {
+    // eslint-disable-next-line vue/require-default-prop
     modalData: {
       type: Object,
     },
@@ -47,7 +53,7 @@ export default {
     return {
       chartData: {},
       showModal: false,
-      styles: { width: '300px',margin:'auto'}
+      styles: { width: '300px', margin: 'auto' },
     }
   },
   beforeUpdate() {
@@ -62,13 +68,12 @@ export default {
         labels: ['推定病床残数', '入院者数'],
         datasets: [
           {
-            backgroundColor: [
-              '#ff3300',
-            ],
+            backgroundColor: ['#ff3300'],
             data: [
               Number(this.modalData.beds_num_hospitalization) -
+                Number(this.modalData.num_hospitalization),
               Number(this.modalData.num_hospitalization),
-              Number(this.modalData.num_hospitalization),
+              console.log(this.modalData.use_bed_rate_severe),
             ],
           },
         ],
